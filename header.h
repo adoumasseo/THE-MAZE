@@ -12,11 +12,12 @@
 
 
 extern SDL_Window *gWindow;
-// extern SDL_Surface *gSurface;
 extern SDL_Renderer *gRenderer;
 
 extern int worldMap[mapWidth][mapHeight];
 
-int init();
-void free_close();
+int init(void);
+void free_close(void);
+void draw_map(void);
+void draw_viewport(void);
 #endif

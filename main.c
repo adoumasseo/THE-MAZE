@@ -53,6 +53,7 @@ int main()
         if (e.type == SDL_QUIT)
           quit = 1;
       }
+      draw_map();
     }
   }
 
