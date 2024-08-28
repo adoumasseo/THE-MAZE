@@ -70,20 +70,7 @@ void draw_map(void)
 {
     int i, j;
     int cellSize = 8; /* Size of each cell based on the map width */
-    SDL_Rect viewport;
     SDL_Rect square; 
-
-    viewport.x = 0;
-    viewport.y = 0;
-    viewport.w = screenWidth / 2; /* 1/4 of the screen width */ 
-    viewport.h = screenHeight / 2; /* 1/4 of the screen height */ 
-
-    /* Set the viewport for the renderer */ 
-    SDL_RenderSetViewport(gRenderer, &viewport);
-
-    /* Clear the renderer with a background color */
-    SDL_SetRenderDrawColor(gRenderer, 0, 0, 255, 255); /*Blue background*/
-    SDL_RenderClear(gRenderer);
 
     /* Iterate through the map and draw each cell */
     for (j = 0; j < mapHeight; j++)
@@ -111,8 +98,28 @@ void draw_map(void)
         }
         SDL_RenderDrawLine(gRenderer, 0, j * cellSize, mapWidth * cellSize - 1, j * cellSize);
     }
-
     /*Update the screen */
     SDL_RenderPresent(gRenderer);
 }
 
+/**
+ * create_viewport - a fct that create an viewport
+ * Desciption: the fct init the viewport values & set it by defautl
+ * Return: Nothing it's void type function
+ */
+void create_viewport(void)
+{
+    SDL_Rect viewport;
+
+    viewport.x = 0;
+    viewport.y = 0;
+    viewport.w = screenWidth / 2; /* 1/4 of the screen width */ 
+    viewport.h = screenHeight / 2; /* 1/4 of the screen height */ 
+
+    /* Set the viewport for the renderer */ 
+    SDL_RenderSetViewport(gRenderer, &viewport);
+
+    /* Clear the renderer with a background color */
+    SDL_SetRenderDrawColor(gRenderer, 0, 0, 0, 255); /*Blue background*/
+    SDL_RenderClear(gRenderer);
+}

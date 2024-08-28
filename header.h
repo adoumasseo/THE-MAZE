@@ -13,11 +13,12 @@
 
 extern SDL_Window *gWindow;
 extern SDL_Renderer *gRenderer;
+extern SDL_Rect viewport;
 
 extern int worldMap[mapWidth][mapHeight];
 
 int init(void);
 void free_close(void);
 void draw_map(void);
-void draw_viewport(void);
+void create_viewport(void);
 #endif

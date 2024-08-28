@@ -54,6 +54,7 @@ int main()
           quit = 1;
       }
       draw_map();
+      create_viewport();
     }
   }
 
