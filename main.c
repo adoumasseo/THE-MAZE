@@ -38,10 +38,6 @@ int main()
 {
   SDL_Event e;
   int quit = 0;
-  double posX = 22, posY = 12;
-  double dirX = -1, dirY = 0;
-  double planeX = 0, planeY = 0.66;
-  double time = 0, oldtime = 0;
 
   if (init() < 0)
   {

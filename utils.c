@@ -1,11 +1,12 @@
 #include "header.h"
 
 SDL_Window *gWindow = NULL;
-SDL_Surface *gSurface = NULL;
+// SDL_Surface *gSurface = NULL;
+SDL_Renderer *gRenderer = NULL;
 
 /**
  * init - a function that make the SDL initialization
- * 
+ * Description: Create gWindow, gRenderer, gSurface
  * Return: Positive number on succes and -1 if fail
  */
 int init()
@@ -28,18 +29,17 @@ int init()
         }
         else
         {
-            gSurface = SDL_GetWindowSurface(gWindow);
-            if (gSurface == NULL)
+            gRenderer = SDL_CreateRenderer(gWindow, -1, SDL_RENDERER_ACCELERATED);
+            if (gRenderer == NULL)
             {
-                printf("Impossible to create an Surface for the %s\n",
-                                                        SDL_GetError());
+                printf("Unable to create a Renderer %s\n", SDL_GetError());
                 succes_status = -1;
             }
             else
             {
-                SDL_FillRect(gSurface, NULL,
-                            SDL_MapRGB(gSurface->format, 255, 255, 255));
-                SDL_UpdateWindowSurface(gWindow);
+                SDL_SetRenderDrawColor( gRenderer, 0xFF, 0xFF, 0xFF, 0xFF );
+                SDL_RenderClear( gRenderer );
+                SDL_RenderPresent( gRenderer );
             }
         }
     }

@@ -12,8 +12,11 @@
 
 
 extern SDL_Window *gWindow;
-extern SDL_Surface *gSurface;
+// extern SDL_Surface *gSurface;
+extern SDL_Renderer *gRenderer;
+
 extern int worldMap[mapWidth][mapHeight];
+
 int init();
 void free_close();
 #endif
