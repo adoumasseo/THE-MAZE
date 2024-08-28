@@ -55,6 +55,7 @@ int main()
       }
       draw_map();
       create_viewport();
+      draw_player();
     }
   }
 

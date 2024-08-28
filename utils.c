@@ -1,8 +1,14 @@
 #include "header.h"
 
 SDL_Window *gWindow = NULL;
-// SDL_Surface *gSurface = NULL;
 SDL_Renderer *gRenderer = NULL;
+
+SDL_Rect viewport;
+SDL_Rect player;
+
+/*Player Position*/
+double px = mapWidth * 8 - 20;
+double py = mapHeight * 8 - 20;
 
 /**
  * init - a function that make the SDL initialization
@@ -69,7 +75,6 @@ void free_close(void)
 void draw_map(void)
 {
     int i, j;
-    int cellSize = 8; /* Size of each cell based on the map width */
     SDL_Rect square; 
 
     /* Iterate through the map and draw each cell */
@@ -98,6 +103,8 @@ void draw_map(void)
         }
         SDL_RenderDrawLine(gRenderer, 0, j * cellSize, mapWidth * cellSize - 1, j * cellSize);
     }
+    SDL_SetRenderDrawColor(gRenderer, 255, 255, 255, 255);
+    draw_player();
     /*Update the screen */
     SDL_RenderPresent(gRenderer);
 }
@@ -109,8 +116,6 @@ void draw_map(void)
  */
 void create_viewport(void)
 {
-    SDL_Rect viewport;
-
     viewport.x = 0;
     viewport.y = 0;
     viewport.w = screenWidth / 2; /* 1/4 of the screen width */ 
@@ -120,6 +125,20 @@ void create_viewport(void)
     SDL_RenderSetViewport(gRenderer, &viewport);
 
     /* Clear the renderer with a background color */
-    SDL_SetRenderDrawColor(gRenderer, 0, 0, 0, 255); /*Blue background*/
+    SDL_SetRenderDrawColor(gRenderer, 0, 0, 0, 255); /*Black background*/
     SDL_RenderClear(gRenderer);
+}
+
+/**
+ * draw_player - a fct that draw the player 
+ * Desciption: the fct draw the player base on his position(lite version)
+ * Return: Nothing it's void type function
+ */
+void draw_player(void)
+{
+    player.x = px;
+    player.y = py;
+    player.w = cellSize;
+    player.h = cellSize;
+    SDL_RenderFillRect(gRenderer, &player);
 }
