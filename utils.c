@@ -9,7 +9,10 @@ SDL_Rect player;
 /*Player Position*/
 double px = mapWidth * cellSize - 20;
 double py = mapHeight * cellSize - 20;
-double moveSpeed = 4.0;
+double pdx;
+double pdy;
+double playerAngle = 0.0;
+double moveSpeed = 5.0;
 /**
  * init - a function that make the SDL initialization
  * Description: Create gWindow, gRenderer, gSurface
@@ -135,18 +138,25 @@ void create_viewport(void)
  */
 void draw_player(void)
 {
+    int lineLength = 20;
+
     player.x = px;
     player.y = py;
     player.w = cellSize;
     player.h = cellSize;
     SDL_RenderFillRect(gRenderer, &player);
+
+    pdx = px + cos(playerAngle) * lineLength;
+    pdy = py + sin(playerAngle) * lineLength;
+
+    SDL_SetRenderDrawColor(gRenderer, 255, 255, 0, 255); 
+    SDL_RenderDrawLine(gRenderer, px + cellSize / 2, py + cellSize / 2, pdx, pdy);
 }
 /**
  * handle_input - a function to handle keyboard input
  * Description: The function updates the player's position based on key presses
  * Return: Nothing, it's a void type function
  */
-void handle_input(SDL_Event e);
 void handle_input(SDL_Event e)
 {
     if (e.type == SDL_KEYDOWN)
@@ -154,16 +164,18 @@ void handle_input(SDL_Event e)
         switch (e.key.keysym.sym)
         {
         case SDLK_z: // Move up
-            py -= moveSpeed;
+            px += cos(playerAngle) * moveSpeed;
+            py += sin(playerAngle) * moveSpeed;
             break;
         case SDLK_s: // Move down
-            py += moveSpeed;
+            px -= cos(playerAngle) * moveSpeed;
+            py -= sin(playerAngle) * moveSpeed;
             break;
         case SDLK_q: // Move left
-            px -= moveSpeed;
+            playerAngle -= rotationSpeed;
             break;
         case SDLK_d: // Move right
-            px += moveSpeed;
+            playerAngle += rotationSpeed;
             break;
         default:
             break;
