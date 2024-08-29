@@ -19,7 +19,7 @@ extern SDL_Rect viewport;
 extern SDL_Rect player;
 extern double px;
 extern double py;
-
+extern double moveSpeed;
 extern int worldMap[mapWidth][mapHeight];
 
 int init(void);
@@ -27,4 +27,5 @@ void free_close(void);
 void draw_map(void);
 void create_viewport(void);
 void draw_player(void);
+void handle_input(SDL_Event e);
 #endif

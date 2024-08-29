@@ -7,9 +7,9 @@ SDL_Rect viewport;
 SDL_Rect player;
 
 /*Player Position*/
-double px = mapWidth * 8 - 20;
-double py = mapHeight * 8 - 20;
-
+double px = mapWidth * cellSize - 20;
+double py = mapHeight * cellSize - 20;
+double moveSpeed = 4.0;
 /**
  * init - a function that make the SDL initialization
  * Description: Create gWindow, gRenderer, gSurface
@@ -118,9 +118,8 @@ void create_viewport(void)
 {
     viewport.x = 0;
     viewport.y = 0;
-    viewport.w = screenWidth / 2; /* 1/4 of the screen width */ 
-    viewport.h = screenHeight / 2; /* 1/4 of the screen height */ 
-
+    viewport.w = 200;
+    viewport.h = 200;
     /* Set the viewport for the renderer */ 
     SDL_RenderSetViewport(gRenderer, &viewport);
 
@@ -141,4 +140,33 @@ void draw_player(void)
     player.w = cellSize;
     player.h = cellSize;
     SDL_RenderFillRect(gRenderer, &player);
+}
+/**
+ * handle_input - a function to handle keyboard input
+ * Description: The function updates the player's position based on key presses
+ * Return: Nothing, it's a void type function
+ */
+void handle_input(SDL_Event e);
+void handle_input(SDL_Event e)
+{
+    if (e.type == SDL_KEYDOWN)
+    {
+        switch (e.key.keysym.sym)
+        {
+        case SDLK_z: // Move up
+            py -= moveSpeed;
+            break;
+        case SDLK_s: // Move down
+            py += moveSpeed;
+            break;
+        case SDLK_q: // Move left
+            px -= moveSpeed;
+            break;
+        case SDLK_d: // Move right
+            px += moveSpeed;
+            break;
+        default:
+            break;
+        }
+    }
 }

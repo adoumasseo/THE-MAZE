@@ -137,7 +137,7 @@ void init()
 void display()
 {   
  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); 
-//  drawMap2D();
+ drawMap2D();
  drawPlayer2D();
  drawRays2D();
  glutSwapBuffers();  

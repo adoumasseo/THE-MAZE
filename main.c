@@ -52,10 +52,10 @@ int main()
       {
         if (e.type == SDL_QUIT)
           quit = 1;
+        handle_input(e);
       }
       draw_map();
       create_viewport();
-      draw_player();
     }
   }
 
