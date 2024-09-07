@@ -48,6 +48,25 @@ int init(void)
 }
 
 /**
+ * create_viewport - a fct that create an viewport
+ * Desciption: the fct init the viewport values & set it by defautl
+ * Return: Nothing it's void type function
+ */
+void create_viewport(void)
+{
+    viewport.x = 0;
+    viewport.y = 0;
+    viewport.w = 200;
+    viewport.h = 200;
+    /* Set the viewport for the renderer */ 
+    SDL_RenderSetViewport(gRenderer, &viewport);
+
+    /* Clear the renderer with a background color */
+    SDL_SetRenderDrawColor(gRenderer, 0, 0, 0, 255); /*Black background*/
+    SDL_RenderClear(gRenderer);
+}
+
+/**
  * free_close - a function to close Every thing create an alloc
  * 
  * Return: Nothing is void type
@@ -60,4 +79,41 @@ void free_close(void)
     gWindow = NULL;
 
     SDL_Quit();
+}
+
+/**
+ * draw_world - this draw the world
+ * @rx: the ray end x coordinates
+ * @ry: the ray en y coordinates
+ * @px: the player x coordinates
+ * @py: the player y coordinates
+ * @ra: the ray angle
+ * @pa: the player direction angle
+ * @index: the current index in the cast_rays loop
+ */
+void draw_world(double rx, double ry, double px,
+                double py, double ra, double pa, int index)
+{
+    int wallTopPixel, wallBottomPixel ;
+    float distanceToWall, wallHeight;
+    const double projectionPlaneDist = (screenWidth / 2) / tan(FOV / 2);
+
+    SDL_RenderSetViewport(gRenderer, NULL);
+
+    distanceToWall = sqrt((rx - px) * (rx - px) + (ry - py) * (ry - py));
+
+    // Remove eyefish effect
+    distanceToWall *= cos(ra - pa);
+    // Calculate wall height on the projection plane
+    wallHeight = (projectionPlaneDist * cellSize) / distanceToWall;
+
+    // Determine top and bottom of the wall slice
+    wallTopPixel = (screenHeight / 2) - (wallHeight / 2);
+    wallBottomPixel = (screenHeight / 2) + (wallHeight / 2);
+
+    // Set wall color (for now, let's assume gray)
+    SDL_SetRenderDrawColor(gRenderer, 100, 100, 100, 255);
+
+    // Draw the vertical line representing the wall slice
+    SDL_RenderDrawLine(gRenderer, index, wallTopPixel, index, wallBottomPixel);
 }

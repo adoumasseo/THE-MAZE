@@ -49,24 +49,6 @@ void draw_map(void)
     
 }
 
-/**
- * create_viewport - a fct that create an viewport
- * Desciption: the fct init the viewport values & set it by defautl
- * Return: Nothing it's void type function
- */
-void create_viewport(void)
-{
-    viewport.x = 0;
-    viewport.y = 0;
-    viewport.w = 200;
-    viewport.h = 200;
-    /* Set the viewport for the renderer */ 
-    SDL_RenderSetViewport(gRenderer, &viewport);
-
-    /* Clear the renderer with a background color */
-    SDL_SetRenderDrawColor(gRenderer, 0, 0, 0, 255); /*Black background*/
-    SDL_RenderClear(gRenderer);
-}
 
 /**
  * draw_player - a fct that draw the player 
@@ -127,7 +109,7 @@ void handle_input(void)
 void cast_rays(void)
 {
     int i, hitWall, mapX, mapY;
-    float rayAngle, rayX, rayY, stepX, stepY;
+    double rayAngle, rayX, rayY, stepX, stepY;
 
     for (i = 0; i < NUM_RAYS; i++)
     {
@@ -152,6 +134,7 @@ void cast_rays(void)
                 hitWall = 1;
                 SDL_SetRenderDrawColor(gRenderer, 255, 0, 0, 255);
                 SDL_RenderDrawLine(gRenderer, px + cellSize / 2, py + cellSize / 2, rayX, rayY);
+                draw_world(rayX, rayY, px, py, rayAngle, playerAngle, i);
             }
         }
     }
