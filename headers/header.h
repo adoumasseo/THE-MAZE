@@ -35,6 +35,6 @@
     void draw_map(void);
     void create_viewport(void);
     void draw_player(void);
-    void handle_input(SDL_Event e);
+    void handle_input(void);
     void cast_rays(void);
     #endif
