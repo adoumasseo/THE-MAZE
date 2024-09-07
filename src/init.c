@@ -1,4 +1,4 @@
-#include "../headers/header.h"
+#include "../inc/header.h"
 
 SDL_Window *gWindow = NULL;
 SDL_Renderer *gRenderer = NULL;
@@ -58,7 +58,7 @@ void create_viewport(void)
 	viewport.y = 0;
 	viewport.w = 200;
 	viewport.h = 200;
-	/* Set the viewport for the renderer */ 
+	/* Set the viewport for the renderer */
 	SDL_RenderSetViewport(gRenderer, &viewport);
 	/* Clear the renderer with a background color */
 	SDL_SetRenderDrawColor(gRenderer, 0, 0, 0, 255); /*Black background*/
@@ -67,7 +67,7 @@ void create_viewport(void)
 
 /**
  * free_close - a function to close Every thing create an alloc
- * 
+ *
  * Return: Nothing is void type
  */
 void free_close(void)
@@ -98,11 +98,11 @@ void draw_world(double rx, double ry, double px,
 
 	SDL_RenderSetViewport(gRenderer, NULL);
 	distanceToWall = sqrt((rx - px) * (rx - px) + (ry - py) * (ry - py));
-    	/* Remove eyefish effect */
+	/* Remove eyefish effect */
 	distanceToWall *= cos(ra - pa);
 	/* Calculate wall height on the projection plane */
 	wallHeight = (projectionPlaneDist * cellSize) / distanceToWall;
-    	/* Determine top and bottom of the wall slice*/
+	/* Determine top and bottom of the wall slice*/
 	wallTopPixel = (screenHeight / 2) - (wallHeight / 2);
 	wallBottomPixel = (screenHeight / 2) + (wallHeight / 2);
 	/* Set wall color (for now, let's assume gray)*/
@@ -113,14 +113,14 @@ void draw_world(double rx, double ry, double px,
 
 /**
  * handle_mouse_input - handle the mouse input for rotate the plan
- * 
+ *
  * Return: Nothing
  */
 void handle_mouse_input(void)
 {
 	int mouseX, mouseY;
-	SDL_GetRelativeMouseState(&mouseX, &mouseY);
 
+	SDL_GetRelativeMouseState(&mouseX, &mouseY);
 	if (mouseX != 0)
 	{
 		/* angle based on horizontal mouse movement (mouseX) */

@@ -1,4 +1,4 @@
-#include "../headers/header.h"
+#include "../inc/header.h"
 
 
 int worldMap[mapWidth][mapHeight] =

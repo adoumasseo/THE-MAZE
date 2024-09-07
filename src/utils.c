@@ -1,4 +1,4 @@
-#include "../headers/header.h"
+#include "../inc/header.h"
 
 /* Player Position */
 SDL_Rect player;

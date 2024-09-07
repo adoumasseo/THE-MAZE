@@ -8,11 +8,11 @@
 
     #define mapWidth 24
     #define mapHeight 24
-    #define screenWidth 640
-    #define screenHeight 480
+    #define screenWidth 1300
+    #define screenHeight 700
     #define cellSize 8
     #define rotationSpeed 0.1
-    #define moveSpeed 3.0
+    #define moveSpeed 1.0
     #define FOV (60 * M_PI / 180)
     #define NUM_RAYS screenWidth
 
