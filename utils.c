@@ -12,7 +12,7 @@ double py = mapHeight * cellSize - 20;
 double pdx;
 double pdy;
 double playerAngle = 0.0;
-double moveSpeed = 5.0;
+double moveSpeed = 3.0;
 /**
  * init - a function that make the SDL initialization
  * Description: Create gWindow, gRenderer, gSurface
@@ -163,14 +163,14 @@ void handle_input(SDL_Event e)
 
     if (state[SDL_SCANCODE_W]) {
         // Move forward
-        px += cos(playerAngle) * 5;
-        py += sin(playerAngle) * 5;
+        px += cos(playerAngle) * moveSpeed;
+        py += sin(playerAngle) * moveSpeed;
     }
 
     if (state[SDL_SCANCODE_S]) {
         // Move backward
-        px -= cos(playerAngle) * 5;
-        py -= sin(playerAngle) * 5;
+        px -= cos(playerAngle) * moveSpeed;
+        py -= sin(playerAngle) * moveSpeed;
     }
 
     if (state[SDL_SCANCODE_A]) {

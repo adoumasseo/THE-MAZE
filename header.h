@@ -11,7 +11,7 @@
 #define screenWidth 640
 #define screenHeight 480
 #define cellSize 8
-#define rotationSpeed 0.05
+#define rotationSpeed 0.1
 
 extern SDL_Window *gWindow;
 extern SDL_Renderer *gRenderer;
