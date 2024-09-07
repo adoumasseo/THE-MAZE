@@ -101,10 +101,10 @@ void draw_map(void)
             SDL_RenderFillRect(gRenderer, &square);
 
             /* Reset the color to gray to draw the line */
-            SDL_SetRenderDrawColor(gRenderer, 82, 78 , 78, 255); 
-            SDL_RenderDrawLineF(gRenderer, i * cellSize, 0, i * cellSize, mapHeight * cellSize - 1);
+            // SDL_SetRenderDrawColor(gRenderer, 82, 78 , 78, 255); 
+            // SDL_RenderDrawLineF(gRenderer, i * cellSize, 0, i * cellSize, mapHeight * cellSize - 1);
         }
-        SDL_RenderDrawLine(gRenderer, 0, j * cellSize, mapWidth * cellSize - 1, j * cellSize);
+        // SDL_RenderDrawLine(gRenderer, 0, j * cellSize, mapWidth * cellSize - 1, j * cellSize);
     }
     SDL_SetRenderDrawColor(gRenderer, 255, 255, 255, 255);
     draw_player();
@@ -161,24 +161,23 @@ void handle_input(SDL_Event e)
 {
     if (e.type == SDL_KEYDOWN)
     {
-        switch (e.key.keysym.sym)
+        if (e.key.keysym.sym == SDLK_z)
         {
-        case SDLK_z: // Move up
             px += cos(playerAngle) * moveSpeed;
             py += sin(playerAngle) * moveSpeed;
-            break;
-        case SDLK_s: // Move down
+        }
+        if (e.key.keysym.sym == SDLK_s)
+        {
             px -= cos(playerAngle) * moveSpeed;
             py -= sin(playerAngle) * moveSpeed;
-            break;
-        case SDLK_q: // Move left
+        }
+        if (e.key.keysym.sym == SDLK_q)
+        {
             playerAngle -= rotationSpeed;
-            break;
-        case SDLK_d: // Move right
+        }
+        if (e.key.keysym.sym == SDLK_d)
+        {
             playerAngle += rotationSpeed;
-            break;
-        default:
-            break;
         }
     }
 }
