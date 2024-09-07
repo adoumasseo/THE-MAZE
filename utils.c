@@ -159,25 +159,27 @@ void draw_player(void)
  */
 void handle_input(SDL_Event e)
 {
-    if (e.type == SDL_KEYDOWN)
-    {
-        if (e.key.keysym.sym == SDLK_z)
-        {
-            px += cos(playerAngle) * moveSpeed;
-            py += sin(playerAngle) * moveSpeed;
-        }
-        if (e.key.keysym.sym == SDLK_s)
-        {
-            px -= cos(playerAngle) * moveSpeed;
-            py -= sin(playerAngle) * moveSpeed;
-        }
-        if (e.key.keysym.sym == SDLK_q)
-        {
-            playerAngle -= rotationSpeed;
-        }
-        if (e.key.keysym.sym == SDLK_d)
-        {
-            playerAngle += rotationSpeed;
-        }
+    const Uint8 *state = SDL_GetKeyboardState(NULL);
+
+    if (state[SDL_SCANCODE_W]) {
+        // Move forward
+        px += cos(playerAngle) * 5;
+        py += sin(playerAngle) * 5;
+    }
+
+    if (state[SDL_SCANCODE_S]) {
+        // Move backward
+        px -= cos(playerAngle) * 5;
+        py -= sin(playerAngle) * 5;
+    }
+
+    if (state[SDL_SCANCODE_A]) {
+        // Move backward
+        playerAngle -= rotationSpeed;
+    }
+    
+    if (state[SDL_SCANCODE_D]) {
+        // Move backward
+        playerAngle += rotationSpeed;
     }
 }
