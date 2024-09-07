@@ -35,7 +35,8 @@
     void draw_map(void);
     void create_viewport(void);
     void draw_player(void);
-    void handle_input(void);
+    void handle_key_input(void);
+    void handle_mouse_input(void);
     void cast_rays(void);
     void draw_world(double rx, double ry, double px,
                     double py, double ra, double pa, int index);

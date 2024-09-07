@@ -2,7 +2,6 @@
 
 SDL_Window *gWindow = NULL;
 SDL_Renderer *gRenderer = NULL;
-
 SDL_Rect viewport;
 
 /**
@@ -12,39 +11,40 @@ SDL_Rect viewport;
  */
 int init(void)
 {
-    int succes_status = 1;
-    if (SDL_Init(SDL_INIT_VIDEO) < 0)
-    {
-        printf("Fail to init: %s\n", SDL_GetError());
-        succes_status = -1;
-    }
-    else
-    {
-        gWindow = SDL_CreateWindow("RAYCASTING TUTO", SDL_WINDOWPOS_UNDEFINED,
-                                    SDL_WINDOWPOS_UNDEFINED, screenWidth,
-                                    screenHeight, SDL_WINDOW_SHOWN);
-        if (gWindow == NULL)
-        {
-            printf("Fail to create a windows %s\n", SDL_GetError());
-            succes_status = -1;
-        }
-        else
-        {
-            gRenderer = SDL_CreateRenderer(gWindow, -1, SDL_RENDERER_ACCELERATED);
-            if (gRenderer == NULL)
-            {
-                printf("Unable to create a Renderer %s\n", SDL_GetError());
-                succes_status = -1;
-            }
-            else
-            {
-                SDL_SetRenderDrawColor( gRenderer, 0xFF, 0xFF, 0xFF, 0xFF );
-                SDL_RenderClear( gRenderer );
-                SDL_RenderPresent( gRenderer );
-            }
-        }
-    }
-    return (succes_status);
+	int succes_status = 1;
+
+	if (SDL_Init(SDL_INIT_VIDEO) < 0)
+	{
+		printf("Fail to init: %s\n", SDL_GetError());
+		succes_status = -1;
+	}
+	else
+	{
+		gWindow = SDL_CreateWindow("RAYCASTING TUTO", SDL_WINDOWPOS_UNDEFINED,
+					SDL_WINDOWPOS_UNDEFINED, screenWidth,
+					screenHeight, SDL_WINDOW_SHOWN);
+	}
+	if (gWindow == NULL)
+	{
+		printf("Fail to create a windows %s\n", SDL_GetError());
+		succes_status = -1;
+	}
+	else
+	{
+		gRenderer = SDL_CreateRenderer(gWindow, -1, SDL_RENDERER_ACCELERATED);
+		if (gRenderer == NULL)
+		{
+			printf("Unable to create a Renderer %s\n", SDL_GetError());
+			succes_status = -1;
+		}
+		else
+		{
+			SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
+			SDL_RenderClear(gRenderer);
+			SDL_RenderPresent(gRenderer);
+		}
+	}
+	return (succes_status);
 }
 
 /**
@@ -54,16 +54,15 @@ int init(void)
  */
 void create_viewport(void)
 {
-    viewport.x = 0;
-    viewport.y = 0;
-    viewport.w = 200;
-    viewport.h = 200;
-    /* Set the viewport for the renderer */ 
-    SDL_RenderSetViewport(gRenderer, &viewport);
-
-    /* Clear the renderer with a background color */
-    SDL_SetRenderDrawColor(gRenderer, 0, 0, 0, 255); /*Black background*/
-    SDL_RenderClear(gRenderer);
+	viewport.x = 0;
+	viewport.y = 0;
+	viewport.w = 200;
+	viewport.h = 200;
+	/* Set the viewport for the renderer */ 
+	SDL_RenderSetViewport(gRenderer, &viewport);
+	/* Clear the renderer with a background color */
+	SDL_SetRenderDrawColor(gRenderer, 0, 0, 0, 255); /*Black background*/
+	SDL_RenderClear(gRenderer);
 }
 
 /**
@@ -73,12 +72,11 @@ void create_viewport(void)
  */
 void free_close(void)
 {
-    SDL_DestroyRenderer( gRenderer );
-    gRenderer = NULL;
-    SDL_DestroyWindow(gWindow);
-    gWindow = NULL;
-
-    SDL_Quit();
+	SDL_DestroyRenderer(gRenderer);
+	gRenderer = NULL;
+	SDL_DestroyWindow(gWindow);
+	gWindow = NULL;
+	SDL_Quit();
 }
 
 /**
@@ -92,28 +90,48 @@ void free_close(void)
  * @index: the current index in the cast_rays loop
  */
 void draw_world(double rx, double ry, double px,
-                double py, double ra, double pa, int index)
+		double py, double ra, double pa, int index)
 {
-    int wallTopPixel, wallBottomPixel ;
-    float distanceToWall, wallHeight;
-    const double projectionPlaneDist = (screenWidth / 2) / tan(FOV / 2);
+	int wallTopPixel, wallBottomPixel;
+	float distanceToWall, wallHeight;
+	const double projectionPlaneDist = (screenWidth / 2) / tan(FOV / 2);
 
-    SDL_RenderSetViewport(gRenderer, NULL);
+	SDL_RenderSetViewport(gRenderer, NULL);
+	distanceToWall = sqrt((rx - px) * (rx - px) + (ry - py) * (ry - py));
+    	/* Remove eyefish effect */
+	distanceToWall *= cos(ra - pa);
+	/* Calculate wall height on the projection plane */
+	wallHeight = (projectionPlaneDist * cellSize) / distanceToWall;
+    	/* Determine top and bottom of the wall slice*/
+	wallTopPixel = (screenHeight / 2) - (wallHeight / 2);
+	wallBottomPixel = (screenHeight / 2) + (wallHeight / 2);
+	/* Set wall color (for now, let's assume gray)*/
+	SDL_SetRenderDrawColor(gRenderer, 100, 100, 100, 255);
+	/* Draw the vertical line representing the wall slice */
+	SDL_RenderDrawLine(gRenderer, index, wallTopPixel, index, wallBottomPixel);
+}
 
-    distanceToWall = sqrt((rx - px) * (rx - px) + (ry - py) * (ry - py));
+/**
+ * handle_mouse_input - handle the mouse input for rotate the plan
+ * 
+ * Return: Nothing
+ */
+void handle_mouse_input(void)
+{
+	int mouseX, mouseY;
+	SDL_GetRelativeMouseState(&mouseX, &mouseY);
 
-    // Remove eyefish effect
-    distanceToWall *= cos(ra - pa);
-    // Calculate wall height on the projection plane
-    wallHeight = (projectionPlaneDist * cellSize) / distanceToWall;
-
-    // Determine top and bottom of the wall slice
-    wallTopPixel = (screenHeight / 2) - (wallHeight / 2);
-    wallBottomPixel = (screenHeight / 2) + (wallHeight / 2);
-
-    // Set wall color (for now, let's assume gray)
-    SDL_SetRenderDrawColor(gRenderer, 100, 100, 100, 255);
-
-    // Draw the vertical line representing the wall slice
-    SDL_RenderDrawLine(gRenderer, index, wallTopPixel, index, wallBottomPixel);
+	if (mouseX != 0)
+	{
+		/* angle based on horizontal mouse movement (mouseX) */
+		playerAngle += mouseX * 0.005;
+	}
+	if (playerAngle < 0)
+	{
+		playerAngle += 2 * M_PI;
+	}
+	if (playerAngle > 2 * M_PI)
+	{
+		playerAngle -= 2 * M_PI;
+	}
 }

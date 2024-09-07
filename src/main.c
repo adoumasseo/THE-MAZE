@@ -52,7 +52,8 @@ int main()
       {
         if (e.type == SDL_QUIT)
           quit = 1;
-        handle_input();
+        handle_key_input();
+        handle_mouse_input();
       }
       create_viewport();
       draw_map();

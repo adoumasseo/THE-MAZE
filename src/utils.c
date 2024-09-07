@@ -67,36 +67,42 @@ void draw_player(void)
 
     pdx = px + cos(playerAngle) * lineLength;
     pdy = py + sin(playerAngle) * lineLength;
+
 }
 
 /**
- * handle_input - a function to handle keyboard input
+ * handle_key_input - a function to handle keyboard input
  * Description: The function updates the player's position based on key presses
  * Return: Nothing, it's a void type function
  */
-void handle_input(void)
+void handle_key_input(void)
 {
     const Uint8 *state = SDL_GetKeyboardState(NULL);
 
     if (state[SDL_SCANCODE_W]) {
-        // Move forward
+        /* Move forward */
         px += cos(playerAngle) * moveSpeed;
         py += sin(playerAngle) * moveSpeed;
     }
-
     if (state[SDL_SCANCODE_S]) {
-        // Move backward
+        /* Move backward */
         px -= cos(playerAngle) * moveSpeed;
         py -= sin(playerAngle) * moveSpeed;
     }
-
+    if (state[SDL_SCANCODE_D]) {
+        /* move perpendicular to the direction the player is facing */
+        px += cos(playerAngle + M_PI / 2) * moveSpeed;
+        py += sin(playerAngle + M_PI / 2) * moveSpeed;
+    }
     if (state[SDL_SCANCODE_A]) {
-        // Move backward
+        /* move perpendicular to the direction the player is facing */
+        px += cos(playerAngle - M_PI / 2) * moveSpeed;
+        py += sin(playerAngle - M_PI / 2) * moveSpeed;
+    }
+    if (state[SDL_SCANCODE_LEFT]) {
         playerAngle -= rotationSpeed;
     }
-    
-    if (state[SDL_SCANCODE_D]) {
-        // Move backward
+    if (state[SDL_SCANCODE_RIGHT]) {
         playerAngle += rotationSpeed;
     }
 }
