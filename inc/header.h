@@ -13,6 +13,7 @@
 	#define moveSpeed 0.5
 	#define FOV (60 * M_PI / 180)
 	#define NUM_RAYS screenWidth
+	#define distance_bf_dark 200
 
 	extern SDL_Window *gWindow;
 
@@ -44,4 +45,5 @@
 	void draw_world(double rx, double ry, double px,
 			double py, double ra, double pa, int index);
 	int is_wall(float x, float y);
+	Uint32 handle_light_effect(Uint32 wallColor, float distance);
 #endif

@@ -30,3 +30,34 @@ void getScreenBound(void)
 	screenWidth = displayBounds.w;
 	screenHeight = displayBounds.h;
 }
+
+/**
+ * handle_light_effect - handle the light based on a factor
+ * Description: This factor is compute using the distance between the
+ * player and the walls and also an const
+ * 
+ * @wallColor: The color using to draw the wall
+ * @distance: The distance between the player and the wall
+ * Return: The emphasis to draw the wall in
+ */
+Uint32 handle_light_effect(Uint32 wallColor, float distance)
+{
+	float factor = 1 - (distance / distance_bf_dark);
+	Uint8 r, g, b, a;
+
+	if (factor < 0)
+		factor = 0;
+	if (factor > 1)
+		factor = 1;
+	r = (wallColor >> 24) & 0xFF;
+	g = (wallColor >> 16) & 0xFF;
+	b = (wallColor >> 8)& 0xFF;
+	a = wallColor & 0xFF;
+
+	r *= factor;
+    g *= factor;
+    b *= factor;
+
+	return ((r << 24) | (g << 16) | (b << 8) | a);
+
+}

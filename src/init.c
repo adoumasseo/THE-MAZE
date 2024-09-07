@@ -100,18 +100,21 @@ void draw_world(double rx, double ry, double px,
 	int wallTopPixel, wallBottomPixel;
 	float distanceToWall, wallHeight;
 	const double projectionPlaneDist = (screenWidth / 2) / tan(FOV / 2);
+	Uint32 drawColor;
+	Uint8 r, g, b, a;
 
 	SDL_RenderSetViewport(gRenderer, NULL);
 	distanceToWall = sqrt((rx - px) * (rx - px) + (ry - py) * (ry - py));
-	/* Remove eyefish effect */
-	distanceToWall *= cos(ra - pa);
-	/* Calculate wall height on the projection plane */
+	distanceToWall *= cos(ra - pa); /*eyefish effect */
 	wallHeight = (projectionPlaneDist * cellSize) / distanceToWall;
-	/* Determine top and bottom of the wall slice*/
 	wallTopPixel = (screenHeight / 2) - (wallHeight / 2);
 	wallBottomPixel = (screenHeight / 2) + (wallHeight / 2);
-	/* Set wall color (for now, let's assume gray)*/
-	SDL_SetRenderDrawColor(gRenderer, 100, 100, 100, 255);
+	drawColor = handle_light_effect((100 << 24) | (100 << 16) | (100 << 8) | 255, distanceToWall);
+	r = (drawColor >> 24) & 0xFF;
+	g = (drawColor >> 16) & 0xFF;
+	b = (drawColor >> 8) & 0xFF;
+	a = drawColor & 0xFF;
+	SDL_SetRenderDrawColor(gRenderer, r, g, b, a);
 	/* Draw the vertical line representing the wall slice */
 	SDL_RenderDrawLine(gRenderer, index, wallTopPixel, index, wallBottomPixel);
 }
