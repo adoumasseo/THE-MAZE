@@ -3,6 +3,9 @@
 SDL_Window *gWindow = NULL;
 SDL_Renderer *gRenderer = NULL;
 SDL_Rect viewport;
+int screenWidth;
+int screenHeight;
+
 
 /**
  * init - a function that make the SDL initialization
@@ -12,7 +15,7 @@ SDL_Rect viewport;
 int init(void)
 {
 	int succes_status = 1;
-
+	
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
 	{
 		printf("Fail to init: %s\n", SDL_GetError());
@@ -20,9 +23,10 @@ int init(void)
 	}
 	else
 	{
+		getScreenBound();
 		gWindow = SDL_CreateWindow("RAYCASTING TUTO", SDL_WINDOWPOS_UNDEFINED,
 					SDL_WINDOWPOS_UNDEFINED, screenWidth,
-					screenHeight, SDL_WINDOW_SHOWN);
+					screenHeight, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
 	}
 	if (gWindow == NULL)
 	{
@@ -31,6 +35,7 @@ int init(void)
 	}
 	else
 	{
+		SDL_MaximizeWindow(gWindow);
 		gRenderer = SDL_CreateRenderer(gWindow, -1, SDL_RENDERER_ACCELERATED);
 		if (gRenderer == NULL)
 		{

@@ -17,3 +17,16 @@ int is_wall(float x, float y)
 	}
 	return (0);
 }
+
+/**
+ * getScreenBound - a fct that initialize the screen Bounds
+ * Return: Nothing it's void type function
+ */
+void getScreenBound(void)
+{
+	SDL_Rect displayBounds;
+
+	SDL_GetDisplayBounds(0, &displayBounds);
+	screenWidth = displayBounds.w;
+	screenHeight = displayBounds.h;
+}
