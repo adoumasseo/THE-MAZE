@@ -1,4 +1,4 @@
-#include "headers/header.h"
+#include "../headers/header.h"
 
 
 int worldMap[mapWidth][mapHeight] =
@@ -52,7 +52,7 @@ int main()
       {
         if (e.type == SDL_QUIT)
           quit = 1;
-        handle_input(e);
+        handle_input();
       }
       create_viewport();
       draw_map();
