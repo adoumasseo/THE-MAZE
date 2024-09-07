@@ -1,4 +1,4 @@
-#include "header.h"
+#include "headers/header.h"
 
 SDL_Window *gWindow = NULL;
 SDL_Renderer *gRenderer = NULL;
@@ -12,7 +12,6 @@ double py = mapHeight * cellSize - 20;
 double pdx;
 double pdy;
 double playerAngle = 0.0;
-double moveSpeed = 3.0;
 /**
  * init - a function that make the SDL initialization
  * Description: Create gWindow, gRenderer, gSurface
@@ -101,15 +100,14 @@ void draw_map(void)
             SDL_RenderFillRect(gRenderer, &square);
 
             /* Reset the color to gray to draw the line */
-            // SDL_SetRenderDrawColor(gRenderer, 82, 78 , 78, 255); 
-            // SDL_RenderDrawLineF(gRenderer, i * cellSize, 0, i * cellSize, mapHeight * cellSize - 1);
+            SDL_SetRenderDrawColor(gRenderer, 82, 78 , 78, 255); 
+            SDL_RenderDrawLineF(gRenderer, i * cellSize, 0, i * cellSize, mapHeight * cellSize - 1);
         }
-        // SDL_RenderDrawLine(gRenderer, 0, j * cellSize, mapWidth * cellSize - 1, j * cellSize);
+        SDL_RenderDrawLine(gRenderer, 0, j * cellSize, mapWidth * cellSize - 1, j * cellSize);
     }
     SDL_SetRenderDrawColor(gRenderer, 255, 255, 255, 255);
     draw_player();
-    /*Update the screen */
-    SDL_RenderPresent(gRenderer);
+    
 }
 
 /**
@@ -148,10 +146,8 @@ void draw_player(void)
 
     pdx = px + cos(playerAngle) * lineLength;
     pdy = py + sin(playerAngle) * lineLength;
-
-    SDL_SetRenderDrawColor(gRenderer, 255, 255, 0, 255); 
-    SDL_RenderDrawLine(gRenderer, px + cellSize / 2, py + cellSize / 2, pdx, pdy);
 }
+
 /**
  * handle_input - a function to handle keyboard input
  * Description: The function updates the player's position based on key presses
@@ -181,5 +177,43 @@ void handle_input(SDL_Event e)
     if (state[SDL_SCANCODE_D]) {
         // Move backward
         playerAngle += rotationSpeed;
+    }
+}
+
+/**
+ * cast_rays - a fct that draw the rays 
+ * 
+ * Return: Nothing for now
+ */
+void cast_rays(void)
+{
+    int i, hitWall, mapX, mapY;
+    float rayAngle, rayX, rayY, stepX, stepY;
+
+    for (i = 0; i < NUM_RAYS; i++)
+    {
+        rayAngle = playerAngle - FOV / 2 + i * (FOV / NUM_RAYS);
+        rayX = px;
+        rayY = py;
+        stepX = cos(rayAngle);
+        stepY = sin(rayAngle);
+
+        hitWall = 0;
+        while(!hitWall)
+        {
+            rayX += stepX;
+            rayY += stepY;
+            mapX = (int)rayX / cellSize;
+            mapY = (int)rayY / cellSize;
+            if (
+                mapX >= 0 && mapX < mapWidth && mapY >= 0 &&
+                mapY < mapHeight && worldMap[mapY][mapX] != 0
+            )
+            {
+                hitWall = 1;
+                SDL_SetRenderDrawColor(gRenderer, 255, 0, 0, 255);
+                SDL_RenderDrawLine(gRenderer, px + cellSize / 2, py + cellSize / 2, rayX, rayY);
+            }
+        }
     }
 }

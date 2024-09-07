@@ -1,4 +1,4 @@
-#include "header.h"
+#include "headers/header.h"
 
 
 int worldMap[mapWidth][mapHeight] =
@@ -54,8 +54,12 @@ int main()
           quit = 1;
         handle_input(e);
       }
-      draw_map();
       create_viewport();
+      draw_map();
+      cast_rays();
+
+      /*Update the screen */
+      SDL_RenderPresent(gRenderer);
     }
   }
 
