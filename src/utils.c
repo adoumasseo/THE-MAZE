@@ -2,11 +2,11 @@
 
 /* Player Position */
 SDL_Rect player;
-double px = mapWidth * cellSize - 20;
-double py = mapHeight * cellSize - 20;
+double px = mapWidth * cellSize - 35;
+double py = mapHeight * cellSize - 35;
 double pdx;
 double pdy;
-double playerAngle = 0.0;
+double playerAngle = 4.5;
 
 /**
  * draw-close - a fct that create an viewport for the map and draw it
