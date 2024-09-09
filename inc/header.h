@@ -46,4 +46,6 @@
 			double py, double ra, double pa, int index);
 	int is_wall(float x, float y);
 	Uint32 handle_light_effect(Uint32 wallColor, float distance);
+	int load_map_from_file(const char *filename);
+	void print_array(void);
 #endif

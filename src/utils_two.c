@@ -61,3 +61,67 @@ Uint32 handle_light_effect(Uint32 wallColor, float distance)
 	return ((r << 24) | (g << 16) | (b << 8) | a);
 
 }
+
+/**
+ * print_array - this function draw in stdout worldMap
+ * 
+ * Return: Nothing it's void type function
+ */
+void print_array(void)
+{
+    int i, j;
+    for (i = 0; i < mapHeight; i++)
+    {
+        for (j = 0; j < mapWidth; j++)
+            printf("%d", worldMap[i][j]);
+        printf("\n");
+    }
+    printf("La hauteur est : %d\n", j);      
+}
+
+/**
+ * load_map_from_file - a function to load the map from a file
+ * Description: This function uses the path given, opens the file
+ * at this map, reads it, and loads it into the worldMap global variable.
+ * 
+ * @filename: the path of the file that contains the map
+ * Return: 1 on success, 0 on failure
+ */
+int load_map_from_file(const char *filename)
+{
+    int col, row = 0;
+    size_t len;
+    FILE *mapFile = NULL;
+    char line[mapWidth + 2];
+
+    if (filename == NULL)
+        return 0;
+    mapFile = fopen(filename, "r");
+    if (mapFile == NULL)
+    {
+        printf("Couldn't open the file: %s\n", filename);
+        return 0;
+    }
+    while (fgets(line, sizeof(line), mapFile) != NULL && row < mapHeight)
+    {
+        len = strlen(line);
+        if (len > 0 && line[len - 1] == '\n')
+            line[len - 1] = '\0';
+        for (col = 0; col < mapWidth; col++)
+        {
+            if (line[col] != '0')
+                worldMap[row][col] = (int)line[col] - 48;
+            else
+                worldMap[row][col] = 0;
+        }
+        row++;
+    }
+    fclose(mapFile);
+    if (row != mapHeight)
+    {
+        printf("Map file incorrect dimensions.Rows read= %d, expected= %d.\n",
+         row, mapHeight);
+        return 0;
+    }
+    return 1;
+}
