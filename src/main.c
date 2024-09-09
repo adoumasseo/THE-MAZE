@@ -1,8 +1,5 @@
 #include "../inc/header.h"
 
-
-int worldMap[mapWidth][mapHeight];
-
 /**
  * main - entry point of the program
  * 
