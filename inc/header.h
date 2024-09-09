@@ -49,4 +49,5 @@
 	Uint32 handle_light_effect(Uint32 wallColor, float distance);
 	int load_map_from_file(const char *filename);
 	void print_array(void);
+	int handle_quit(void);
 #endif

@@ -34,6 +34,8 @@ int main(int argc, char *argv[])
 			{
 				if (e.type == SDL_QUIT)
 					quit = 1;
+				if (handle_quit())
+					quit = 1;
 				handle_key_input();
 				handle_mouse_input();
 			}

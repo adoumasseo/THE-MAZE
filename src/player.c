@@ -89,3 +89,16 @@ void handle_key_input(void)
 		if (!is_wall(newPx, py))
 			px = newPx;
 }
+
+/**
+ * handle_quit - this fct will quit tell if the user press ECHAP or not
+ * Return: 1 if the user press ECHAP 0 else
+ */
+int handle_quit(void)
+{
+	const Uint8 *state = SDL_GetKeyboardState(NULL);
+
+	if (state[SDL_SCANCODE_ESCAPE])
+		return (1);
+	return (0);
+}
