@@ -8,6 +8,9 @@ double pdx;
 double pdy;
 double playerAngle = 4.5;
 
+/* Game viewport*/
+SDL_Rect game_viewport;
+
 /**
  * draw-close - a fct that create an viewport for the map and draw it
  * 
@@ -146,8 +149,12 @@ void cast_rays(void)
             )
             {
                 hitWall = 1;
+                SDL_RenderSetViewport(gRenderer, &ath_viewport);
                 SDL_SetRenderDrawColor(gRenderer, 255, 0, 0, 255);
-                SDL_RenderDrawLine(gRenderer, px + cellSize / 2, py + cellSize / 2, rayX, rayY);
+                SDL_RenderDrawLine(gRenderer, px + cellSize / 2,
+                                    py + cellSize / 2, rayX, rayY);
+                
+	            SDL_RenderSetViewport(gRenderer, &game_viewport);
                 draw_world(rayX, rayY, px, py, rayAngle, playerAngle, i);
             }
         }

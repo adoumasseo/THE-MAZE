@@ -19,7 +19,8 @@
 
 	extern SDL_Renderer *gRenderer;
 
-	extern SDL_Rect viewport;
+	extern SDL_Rect ath_viewport;
+	extern SDL_Rect game_viewport;
 
 	/* Player Position */
 	extern SDL_Rect player;

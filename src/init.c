@@ -2,7 +2,7 @@
 
 SDL_Window *gWindow = NULL;
 SDL_Renderer *gRenderer = NULL;
-SDL_Rect viewport;
+SDL_Rect ath_viewport;
 int screenWidth;
 int screenHeight;
 
@@ -59,12 +59,18 @@ int init(void)
  */
 void create_viewport(void)
 {
-	viewport.x = 0;
-	viewport.y = 0;
-	viewport.w = 200;
-	viewport.h = 200;
+	/* Viewport for ATH*/
+	ath_viewport.x = 0;
+	ath_viewport.y = 0;
+	ath_viewport.w = 200;
+	ath_viewport.h = screenHeight;
+	/* Viewport for Game */
+	game_viewport.x = 200;
+	game_viewport.y = 0;
+	game_viewport.w = screenWidth -200;
+	game_viewport.h = screenHeight;
 	/* Set the viewport for the renderer */
-	SDL_RenderSetViewport(gRenderer, &viewport);
+	SDL_RenderSetViewport(gRenderer, &ath_viewport);
 	/* Clear the renderer with a background color */
 	SDL_SetRenderDrawColor(gRenderer, 0, 0, 0, 255); /*Black background*/
 	SDL_RenderClear(gRenderer);
@@ -102,8 +108,7 @@ void draw_world(double rx, double ry, double px,
 	const double projectionPlaneDist = (screenWidth / 2) / tan(FOV / 2);
 	Uint32 drawColor;
 	Uint8 r, g, b, a;
-
-	SDL_RenderSetViewport(gRenderer, NULL);
+	
 	distanceToWall = sqrt((rx - px) * (rx - px) + (ry - py) * (ry - py));
 	distanceToWall *= cos(ra - pa); /*eyefish effect */
 	wallHeight = (projectionPlaneDist * cellSize) / distanceToWall;
