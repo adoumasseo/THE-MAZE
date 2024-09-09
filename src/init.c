@@ -8,7 +8,7 @@
 int init(void)
 {
 	int succes_status = 1;
-	
+
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
 	{
 		printf("Fail to init: %s\n", SDL_GetError());
@@ -60,7 +60,7 @@ void create_viewport(void)
 	/* Viewport for Game */
 	game_viewport.x = 200;
 	game_viewport.y = 0;
-	game_viewport.w = screenWidth -200;
+	game_viewport.w = screenWidth - 200;
 	game_viewport.h = screenHeight;
 	/* Set the viewport for the renderer */
 	SDL_RenderSetViewport(gRenderer, &ath_viewport);

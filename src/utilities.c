@@ -34,17 +34,17 @@ void getScreenBound(void)
 
 /**
  * print_array - this function draw in stdout worldMap
- * 
  * Return: Nothing it's void type function
  */
 void print_array(void)
 {
-    int i, j;
-    for (i = 0; i < mapHeight; i++)
-    {
-        for (j = 0; j < mapWidth; j++)
-            printf("%d", worldMap[i][j]);
-        printf("\n");
-    }
-    printf("La hauteur est : %d\n", j);      
+	int i, j;
+
+	for (i = 0; i < mapHeight; i++)
+	{
+		for (j = 0; j < mapWidth; j++)
+		printf("%d", worldMap[i][j]);
+		printf("\n");
+	}
+	printf("La hauteur est : %d\n", j);
 }

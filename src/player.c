@@ -1,23 +1,21 @@
 #include "../inc/header.h"
 
 /**
- * draw_player - a fct that draw the player 
+ * draw_player - a fct that draw the player
  * Desciption: the fct draw the player base on his position(lite version)
  * Return: Nothing it's void type function
  */
 void draw_player(void)
 {
-    int lineLength = 20;
+	int lineLength = 20;
 
-    player.x = px;
-    player.y = py;
-    player.w = cellSize;
-    player.h = cellSize;
-    SDL_RenderFillRect(gRenderer, &player);
-
-    pdx = px + cos(playerAngle) * lineLength;
-    pdy = py + sin(playerAngle) * lineLength;
-
+	player.x = px;
+	player.y = py;
+	player.w = cellSize;
+	player.h = cellSize;
+	SDL_RenderFillRect(gRenderer, &player);
+	pdx = px + cos(playerAngle) * lineLength;
+	pdy = py + sin(playerAngle) * lineLength;
 }
 
 /**
@@ -77,7 +75,7 @@ void handle_key_input(void)
 	}
 	if (state[SDL_SCANCODE_LEFT])
 		playerAngle -= rotationSpeed;
-	if (state[SDL_SCANCODE_RIGHT]) 
+	if (state[SDL_SCANCODE_RIGHT])
 		playerAngle += rotationSpeed;
 	if (!is_wall(newPx, py))
 		px = newPx;

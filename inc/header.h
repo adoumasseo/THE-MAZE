@@ -10,10 +10,10 @@
 	#define mapHeight 24
 	#define cellSize 8
 	#define rotationSpeed 0.1
-	#define moveSpeed 0.5
+	#define moveSpeed 0.8
 	#define FOV (60 * M_PI / 180)
 	#define NUM_RAYS screenWidth
-	#define distance_bf_dark 200
+	#define distance_bf_dark 400
 
 	extern SDL_Window *gWindow;
 
