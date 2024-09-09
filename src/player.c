@@ -27,6 +27,7 @@ void handle_mouse_input(void)
 {
 	int mouseX, mouseY;
 
+	SDL_SetRelativeMouseMode(SDL_TRUE);
 	SDL_GetRelativeMouseState(&mouseX, &mouseY);
 	if (mouseX != 0)
 	{
