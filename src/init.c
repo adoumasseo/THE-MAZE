@@ -40,6 +40,15 @@ int init(void)
 			SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
 			SDL_RenderClear(gRenderer);
 			SDL_RenderPresent(gRenderer);
+			if (!load_texture_with_upng())
+			{
+				printf("Error loading IMG \n");
+				succes_status = -1;
+			}
+			else
+			{
+				print_texture();
+			}
 		}
 	}
 	return (succes_status);
@@ -80,5 +89,6 @@ void free_close(void)
 	gRenderer = NULL;
 	SDL_DestroyWindow(gWindow);
 	gWindow = NULL;
+	free_texture_of_upng();
 	SDL_Quit();
 }

@@ -5,6 +5,7 @@
 	#include "SDL2/SDL.h"
 	#include <stddef.h>
 	#include <math.h>
+	#include "upng.h"
 
 	#define mapWidth 24
 	#define mapHeight 24
@@ -15,12 +16,32 @@
 	#define NUM_RAYS screenWidth
 	#define distance_bf_dark 400
 
-	extern SDL_Window *gWindow;
+	/**
+	 * struct texture_s - struct for texture
+	 * @w: texture width
+	 * @h: texture height
+	 * @texture_buffer: pointer to texture buffer
+	 * @upng_texture: pointer to upng buffer
+	 */
+	typedef struct texture_s
+	{
+		int w;
+		int h;
+		Uint32 *texture_buffer;
+		upng_t *upng_texture;
+	} texture_t;
 
+	/* window & Renderer */
+	extern SDL_Window *gWindow;
 	extern SDL_Renderer *gRenderer;
 
+	/*Viewport*/
 	extern SDL_Rect ath_viewport;
 	extern SDL_Rect game_viewport;
+
+	/* Texture*/
+	extern texture_t wall;
+	extern texture_t exitWall;
 
 	/* Player Position */
 	extern SDL_Rect player;
@@ -53,4 +74,7 @@
 	void print_array(void);
 	int handle_quit(void);
 	void set_hitVertical(float rx, float ry);
+	int load_texture_with_upng(void);
+	void free_texture_of_upng(void);
+	void print_texture(void);
 #endif
