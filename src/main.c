@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
 				handle_mouse_input();
 			}
 			create_viewport();
-			draw_map();
+			/*draw_map();*/
 			cast_rays();
 			/*Update the screen */
 			SDL_RenderPresent(gRenderer);

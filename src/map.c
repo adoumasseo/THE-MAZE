@@ -70,9 +70,9 @@ void cast_rays(void)
 				hitWall = 1;
 				set_hitVertical(rayX, rayY);
 				SDL_RenderSetViewport(gRenderer, &ath_viewport);
-				SDL_SetRenderDrawColor(gRenderer, 255, 0, 0, 255);
+				/*SDL_SetRenderDrawColor(gRenderer, 255, 0, 0, 255);
 				SDL_RenderDrawLine(gRenderer, px + cellSize / 2,
-						py + cellSize / 2, rayX, rayY);
+						py + cellSize / 2, rayX, rayY);*/
 				SDL_RenderSetViewport(gRenderer, &game_viewport);
 				draw_world(rayX, rayY, px, py, rayAngle, playerAngle, i);
 			}

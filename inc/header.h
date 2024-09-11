@@ -9,9 +9,9 @@
 
 	#define mapWidth 24
 	#define mapHeight 24
-	#define cellSize 8
+	#define cellSize 32
 	#define rotationSpeed 0.1
-	#define moveSpeed 0.8
+	#define moveSpeed 4
 	#define FOV (60 * M_PI / 180)
 	#define NUM_RAYS screenWidth
 	#define distance_bf_dark 400
