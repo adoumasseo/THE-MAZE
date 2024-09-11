@@ -1,5 +1,29 @@
 #include "../inc/header.h"
 
+
+/**
+ * drax_celling - draw the celling
+ * Return: Nothing
+ */
+void draw_celling(int index, int wtp)
+{
+	/* Draw celling */
+	SDL_SetRenderDrawColor(gRenderer, 85, 129, 149, 255);
+	SDL_RenderDrawLine(gRenderer, index, 0, index, wtp);
+}
+
+/**
+ * draw_floor - draw the floor
+ * Return: Nothing
+ */
+void draw_floor(int index, int wbp)
+{
+	/* Draw floor*/
+	SDL_SetRenderDrawColor(gRenderer, 28, 40, 51, 255);
+	SDL_RenderDrawLine(gRenderer, index, wbp,
+					index, screenHeight);
+}
+
 /**
  * draw_world - this draw the world
  * @rx: the ray end x coordinates
@@ -24,15 +48,6 @@ void draw_world(double rx, double ry, double px,
 	wallHeight = (projectionPlaneDist * cellSize) / distanceToWall;
 	wallTopPixel = (screenHeight / 2) - (wallHeight / 2);
 	wallBottomPixel = (screenHeight / 2) + (wallHeight / 2);
-
-	/* Draw celling */
-	SDL_SetRenderDrawColor(gRenderer, 85, 129, 149, 255);
-	SDL_RenderDrawLine(gRenderer, index, 0, index, wallTopPixel);
-
-	/* Draw floor*/
-	SDL_SetRenderDrawColor(gRenderer, 28, 40, 51, 255);
-	SDL_RenderDrawLine(gRenderer, index, wallBottomPixel,
-					index, screenHeight);
 
 	drawColor = handle_light_effect((255 << 24) | (255 << 16)
 				| (255 << 8) | 255, distanceToWall);
