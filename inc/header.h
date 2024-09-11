@@ -34,6 +34,8 @@
 	extern int screenWidth;
 	extern int screenHeight;
 
+	extern int hitVertical;
+
 	void getScreenBound(void);
 	int init(void);
 	void free_close(void);
@@ -50,4 +52,5 @@
 	int load_map_from_file(const char *filename);
 	void print_array(void);
 	int handle_quit(void);
+	void set_hitVertical(float rx, float ry);
 #endif

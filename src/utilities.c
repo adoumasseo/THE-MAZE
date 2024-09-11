@@ -48,3 +48,18 @@ void print_array(void)
 	}
 	printf("La hauteur est : %d\n", j);
 }
+
+/**
+ * set_hitVertical - this fct set the global variable hitVertical
+ * Description: hitVertical = 1 if it's vertical and 0 else
+ * @rx: the current ray x coordinate
+ * @ry: the current ray y coordinate
+ * Return: Nothing it's void type function
+ */
+void set_hitVertical(float rx, float ry)
+{
+	if (fabs(rx - px) > fabs(ry - py))
+		hitVertical = 1;
+	else
+		hitVertical = 0;
+}

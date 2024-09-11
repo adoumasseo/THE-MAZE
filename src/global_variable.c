@@ -19,3 +19,4 @@ double py = mapHeight * cellSize - 35;
 double pdx;/*assign in player.c draw_player() */
 double pdy;/*assign in player.c draw_player() */
 double playerAngle = 4.5;
+int hitVertical = 0; /* Check if a vertical or horizontal wall is hit*/
