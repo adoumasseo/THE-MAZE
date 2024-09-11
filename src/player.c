@@ -9,10 +9,10 @@ void draw_player(void)
 {
 	int lineLength = 20;
 
-	player.x = px;
-	player.y = py;
-	player.w = cellSize;
-	player.h = cellSize;
+	player.x = px * draw_factor;
+	player.y = py * draw_factor;
+	player.w = cellSize * draw_factor;
+	player.h = cellSize * draw_factor;
 	SDL_RenderFillRect(gRenderer, &player);
 	pdx = px + cos(playerAngle) * lineLength;
 	pdy = py + sin(playerAngle) * lineLength;

@@ -15,10 +15,10 @@ void draw_map(void)
 		for (i = 0; i < mapWidth; i++)
 		{
 			/* Define the square's position and size */
-			square.x = i * cellSize;
-			square.y = j * cellSize;
-			square.w = cellSize;
-			square.h = cellSize;
+			square.x = i * cellSize * draw_factor;
+			square.y = j * cellSize * draw_factor;
+			square.w = cellSize * draw_factor;
+			square.h = cellSize * draw_factor;
 			/*Set the draw color based on map value*/
 			if (worldMap[j][i] == 0)
 				SDL_SetRenderDrawColor(gRenderer,
@@ -30,11 +30,13 @@ void draw_map(void)
 			SDL_RenderFillRect(gRenderer, &square);
 			/* Reset the color to gray to draw the line */
 			SDL_SetRenderDrawColor(gRenderer, 82, 78, 78, 255);
-			SDL_RenderDrawLineF(gRenderer, i * cellSize, 0,
-				i * cellSize, mapHeight * cellSize - 1);
+			SDL_RenderDrawLineF(gRenderer, i * cellSize * draw_factor,
+						0, i * cellSize * draw_factor,
+						mapHeight * cellSize * draw_factor - 1);
 		}
-		SDL_RenderDrawLine(gRenderer, 0, j * cellSize,
-			mapWidth * cellSize - 1, j * cellSize);
+		SDL_RenderDrawLine(gRenderer, 0, j * cellSize * draw_factor,
+				mapWidth * cellSize * draw_factor - 1,
+				j * cellSize*draw_factor);
 	}
 	SDL_SetRenderDrawColor(gRenderer, 255, 255, 255, 255);
 	draw_player();
@@ -71,8 +73,11 @@ void cast_rays(void)
 				set_hitVertical(rayX, rayY);
 				SDL_RenderSetViewport(gRenderer, &ath_viewport);
 				SDL_SetRenderDrawColor(gRenderer, 255, 0, 0, 255);
-				SDL_RenderDrawLine(gRenderer, px + cellSize / 2,
-						py + cellSize / 2, rayX, rayY);
+				/*Draw with factor */
+				SDL_RenderDrawLine(gRenderer,
+					px * draw_factor  + cellSize * draw_factor / 2,
+					py * draw_factor + cellSize * draw_factor / 2,
+					rayX * draw_factor, rayY * draw_factor);
 				SDL_RenderSetViewport(gRenderer, &game_viewport);
 				draw_world(rayX, rayY, px, py, rayAngle, playerAngle, i);
 			}
