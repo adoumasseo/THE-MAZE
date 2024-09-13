@@ -78,6 +78,6 @@
 	int load_texture_with_upng(void);
 	void free_texture_of_upng(void);
 	void print_texture(void);
-	vooid draw_celling(int index, int wtp);
-	void draw_flor(int index, int wbp);
+	void draw_celling(int index, int wtp);
+	void draw_floor(int index, int wbp);
 #endif

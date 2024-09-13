@@ -45,10 +45,6 @@ int init(void)
 				printf("Error loading IMG \n");
 				succes_status = -1;
 			}
-			else
-			{
-				print_texture();
-			}
 		}
 	}
 	return (succes_status);

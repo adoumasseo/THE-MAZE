@@ -51,6 +51,8 @@ void draw_world(double rx, double ry, double px,
 	wallTopPixel = (screenHeight / 2) - (wallHeight / 2);
 	wallBottomPixel = (screenHeight / 2) + (wallHeight / 2);
 
+	draw_celling(index, wallTopPixel);
+	draw_floor(index, wallBottomPixel);
 
 	if (hitVertical)
 		hitX = (ry - (int)ry) * wall.w;
@@ -62,13 +64,13 @@ void draw_world(double rx, double ry, double px,
 	{
 		texY = (y - wallTopPixel) * ((float)wall.h / wallHeight);
 		texel = wall.texture_buffer[(texY * wall.w) + texX];
-		drawColor = handle_light_effect(texel, distanceToWall);
-		r = (drawColor >> 24) & 0xFF;
-		g = (drawColor >> 16) & 0xFF;
-		b = (drawColor >> 8) & 0xFF;
-		a = drawColor & 0xFF;
+		// drawColor = handle_light_effect(texel, distanceToWall);
+		r = (texel >> 24) & 0xFF;
+		g = (texel >> 16) & 0xFF;
+		b = (texel >> 8) & 0xFF;
+		a = texel & 0xFF;
 		SDL_SetRenderDrawColor(gRenderer, r, g, b, a);
 		/* Draw the vertical line representing the wall slice */
-		SDL_RenderDrawPoint(gRenderer, index, y);
+		SDL_RenderDrawLine(gRenderer, index, wallTopPixel, index, wallBottomPixel);
 	}
 }
