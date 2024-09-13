@@ -43,7 +43,7 @@ void print_array(void)
 	for (i = 0; i < mapHeight; i++)
 	{
 		for (j = 0; j < mapWidth; j++)
-		printf("%d", worldMap[i][j]);
+			printf("%d", worldMap[i][j]);
 		printf("\n");
 	}
 	printf("La hauteur est : %d\n", j);

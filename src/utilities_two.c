@@ -26,3 +26,17 @@ char *random_map_path(void)
 	}
 	return (path);
 }
+
+/**
+ * find_color - find the appropriate color to draw a wall
+ * @x: mapX from cast_rays in map.c
+ * @y: mapY from cast_rays in map.c
+ * Return: An integer 1 -> white(wall), 2 -> green(exit)
+ */
+int find_color(int x, int y)
+{
+	if (worldMap[y][x] == 1)
+		return (1);
+	else
+		return(2);
+}

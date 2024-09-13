@@ -53,6 +53,12 @@
 	extern double playerAngle;
 	extern double pdx;
 	extern double pdy;
+
+	/* Exit wall coordinate */
+	extern int exit_x;
+	extern int exit_y;
+	
+	/* Map */
 	extern int worldMap[mapWidth][mapHeight];
 
 	extern int screenWidth;
@@ -70,7 +76,8 @@
 	void handle_mouse_input(void);
 	void cast_rays(void);
 	void draw_world(double rx, double ry, double px,
-			double py, double ra, double pa, int index);
+			double py, double ra, double pa,
+			int index, int color_code);
 	int is_wall(float x, float y);
 	Uint32 handle_light_effect(Uint32 wallColor, float distance);
 	int load_map_from_file(void);
@@ -84,4 +91,6 @@
 	void draw_floor(int index, int wbp);
 	int random_int(void);
 	char *random_map_path(void);
+	int find_color(int x, int y);
+	void find_exit_wall(void);
 #endif

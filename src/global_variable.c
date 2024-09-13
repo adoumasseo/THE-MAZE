@@ -28,3 +28,6 @@ int hitVertical = 0; /* Check if a vertical or horizontal wall is hit*/
 /*Texture for the walls*/
 texture_t wall;
 texture_t exitWall;
+
+/* Exit wall coordinate */
+int exit_x, exit_y;

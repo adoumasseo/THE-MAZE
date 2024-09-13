@@ -35,7 +35,8 @@ void draw_floor(int index, int wbp)
  * @index: the current index in the cast_rays loop
  */
 void draw_world(double rx, double ry, double px,
-		double py, double ra, double pa, int index)
+			double py, double ra, double pa,
+			int index, int color_code)
 {
 	int wallTopPixel, wallBottomPixel;
 	float distanceToWall, wallHeight;
@@ -49,17 +50,15 @@ void draw_world(double rx, double ry, double px,
 	wallTopPixel = (screenHeight / 2) - (wallHeight / 2);
 	wallBottomPixel = (screenHeight / 2) + (wallHeight / 2);
 
-	/* Draw celling */
-	SDL_SetRenderDrawColor(gRenderer, 85, 129, 149, 255);
-	SDL_RenderDrawLine(gRenderer, index, 0, index, wallTopPixel);
+	draw_celling(index, wallTopPixel);
+	draw_floor(index, wallBottomPixel);
 
-	/* Draw floor*/
-	SDL_SetRenderDrawColor(gRenderer, 28, 40, 51, 255);
-	SDL_RenderDrawLine(gRenderer, index, wallBottomPixel,
-					index, screenHeight);
-
-	drawColor = handle_light_effect((255 << 24) | (255 << 16)
-				| (255 << 8) | 255, distanceToWall);
+	if (color_code == 1)
+		drawColor = handle_light_effect((255 << 24) | (255 << 16)
+					| (255 << 8) | 255, distanceToWall);
+	else if (color_code == 2)
+		drawColor = handle_light_effect((0 << 24) | (255 << 16)
+					| (0 << 8) | 255, distanceToWall);
 	r = (drawColor >> 24) & 0xFF;
 	g = (drawColor >> 16) & 0xFF;
 	b = (drawColor >> 8) & 0xFF;

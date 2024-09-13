@@ -23,9 +23,12 @@ void draw_map(void)
 			if (worldMap[j][i] == 0)
 				SDL_SetRenderDrawColor(gRenderer,
 							0, 0, 0, 255);
-			else
+			else if (worldMap[j][i] == 1)
 				SDL_SetRenderDrawColor(gRenderer,
 						255, 255, 255, 255);
+			else
+				SDL_SetRenderDrawColor(gRenderer,
+						0, 255, 0, 255);
 			/*Draw the rectangle */
 			SDL_RenderFillRect(gRenderer, &square);
 			/* Reset the color to gray to draw the line */
@@ -66,8 +69,7 @@ void cast_rays(void)
 			mapX = (int)rayX / cellSize;
 			mapY = (int)rayY / cellSize;
 			if (mapX >= 0 && mapX < mapWidth && mapY >= 0 &&
-				mapY < mapHeight && worldMap[mapY][mapX] != 0
-				)
+				mapY < mapHeight && worldMap[mapY][mapX] != 0)
 			{
 				hitWall = 1;
 				set_hitVertical(rayX, rayY);
@@ -79,7 +81,8 @@ void cast_rays(void)
 					py * draw_factor + cellSize * draw_factor / 2,
 					rayX * draw_factor, rayY * draw_factor);
 				SDL_RenderSetViewport(gRenderer, &game_viewport);
-				draw_world(rayX, rayY, px, py, rayAngle, playerAngle, i);
+				draw_world(rayX, rayY, px, py, rayAngle, playerAngle,
+							i, find_color(mapX, mapY));
 			}
 		}
 	}
@@ -157,7 +160,6 @@ int load_map_from_file(void)
 		printf("Map load is: %s\n", filename);
 		return (0);
 	}
-	printf("Map load is: %s\n", filename);
 	free(filename);
 	return (1);
 }
