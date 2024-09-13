@@ -18,6 +18,7 @@
 	#define FOV (60 * M_PI / 180)
 	#define NUM_RAYS screenWidth
 	#define distance_bf_dark 800
+	#define distance_around_exit 2
 
 	/**
 	 * struct texture_s - struct for texture
@@ -93,5 +94,5 @@
 	char *random_map_path(void);
 	int find_color(int x, int y);
 	void find_exit_wall(void);
-	void can_exit(void);
+	int can_exit(void);
 #endif

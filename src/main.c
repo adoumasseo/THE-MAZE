@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
 			{
 				if (e.type == SDL_QUIT)
 					quit = 1;
-				if (handle_quit())
+				if (can_exit() && handle_quit())
 					quit = 1;
 				handle_key_input();
 				handle_mouse_input();
@@ -43,7 +43,7 @@ int main(int argc, char *argv[])
 			SDL_RenderPresent(gRenderer);
 		}
 	}
-	printf("(%f, %f)\n", px, py);
+	/*printf("(%f, %f)\n", px, py);*/
 	free_close();
 	return (0);
 }

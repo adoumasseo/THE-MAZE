@@ -41,7 +41,10 @@ int find_color(int x, int y)
 		return(2);
 }
 
-
+/**
+ * find_exit_wall - a fct to find the exit coordinate of the world
+ * Return: Nothing it's void type function
+ */
 void find_exit_wall(void)
 {
 	int j, i;
@@ -57,5 +60,22 @@ void find_exit_wall(void)
 			}
 		}
 	}
-	printf("(%d, %d)\n", exit_x, exit_y);
+	/*printf("(%d, %d)\n", exit_x, exit_y);*/
+}
+
+/**
+ * can_exit - check if the player is at the right position to exit
+ * Return: 1 if the player can and 0 else
+ */
+int can_exit(void)
+{
+	int iPx = (int)(px / cellSize);
+	int iPy = (int)(py / cellSize);
+
+	/*printf("(iPx: %d, iPy: %d)\n", iPx, iPy);*/
+	if (iPx <= exit_x + distance_around_exit && iPx >= exit_x
+			&& iPy <= exit_y + distance_around_exit && iPy >= exit_y)
+		return (1);
+	else
+		return (0);
 }
