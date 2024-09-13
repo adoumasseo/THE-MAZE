@@ -9,14 +9,16 @@ int init(void)
 {
 	int succes_status = 1;
 
-	if (SDL_Init(SDL_INIT_VIDEO) < 0)
+	if (SDL_Init(SDL_INIT_VIDEO) < 0 || TTF_Init() == -1)
 	{
-		printf("Fail to init: %s\n", SDL_GetError());
+		printf("Fail to init: %s\n, %s\n", SDL_GetError(), TTF_GetError());
 		succes_status = -1;
 	}
 	else
 	{
 		getScreenBound();
+		if (!init_font())
+			succes_status = -1;
 		gWindow = SDL_CreateWindow("RAYCASTING TUTO", SDL_WINDOWPOS_UNDEFINED,
 					SDL_WINDOWPOS_UNDEFINED, screenWidth,
 					screenHeight, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
@@ -48,6 +50,22 @@ int init(void)
 		}
 	}
 	return (succes_status);
+}
+
+/**
+ * init_font - init the variable font value
+ * Return: 0 if fail 1 else
+ */
+int init_font(void)
+{
+	font_prompt_q = TTF_OpenFont("./assets/fonts/Montserrat-Black.ttf", 30);
+	font_prompt_o = TTF_OpenFont("./assets/fonts/Montserrat-Medium.ttf", 20);
+	if (font_prompt_o == NULL || font_prompt_q == NULL || font_win == NULL);
+	{
+		printf("Failed to load font! SDL_ttf Error: %s\n", TTF_GetError());
+		return (0);
+	}
+	return (1);
 }
 
 /**
@@ -86,5 +104,6 @@ void free_close(void)
 	SDL_DestroyWindow(gWindow);
 	gWindow = NULL;
 	/*free_texture_of_upng();*/
+	TTF_Quit();
 	SDL_Quit();
 }

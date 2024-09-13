@@ -3,6 +3,7 @@
 
 	#include "stdio.h"
 	#include "SDL2/SDL.h"
+	#include <SDL2/SDL_ttf.h>
 	#include <stddef.h>
 	#include <stdlib.h>
 	#include <time.h>
@@ -38,6 +39,11 @@
 	/* window & Renderer */
 	extern SDL_Window *gWindow;
 	extern SDL_Renderer *gRenderer;
+	extern int quit;
+
+	/*Font*/
+	extern TTF_Font *font_prompt_q; /* q for question*/
+	extern TTF_Font *font_prompt_o; /* o for options*/
 
 	/*Viewport*/
 	extern SDL_Rect ath_viewport;
@@ -95,4 +101,7 @@
 	int find_color(int x, int y);
 	void find_exit_wall(void);
 	int can_exit(void);
+	int init_font(void);
+	void exit_prompt(void);
+	void handle_confirm_quit(SDL_Event e);
 #endif

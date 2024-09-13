@@ -3,6 +3,11 @@
 /* SDL STUFF*/
 SDL_Window *gWindow = NULL;
 SDL_Renderer *gRenderer = NULL;
+int quit;
+
+/* Font */
+TTF_Font *font_prompt_q;
+TTF_Font *font_prompt_o;
 
 /* ATH viewport: assign in init.c*/
 SDL_Rect ath_viewport;

@@ -9,8 +9,8 @@
 int main(int argc, char *argv[])
 {
 	SDL_Event e;
-	int quit = 0;
-
+	quit = 0;
+	
 	if (!load_map_from_file())
 	{
 		printf("Unable to load the map \n");
@@ -33,6 +33,11 @@ int main(int argc, char *argv[])
 					quit = 1;
 				if (can_exit() && handle_quit())
 					quit = 1;
+				else if (handle_quit())
+				{
+					exit_prompt();
+					handle_confirm_quit(e);
+				}
 				handle_key_input();
 				handle_mouse_input();
 			}
