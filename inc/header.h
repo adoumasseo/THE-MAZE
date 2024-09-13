@@ -57,7 +57,7 @@
 	/* Exit wall coordinate */
 	extern int exit_x;
 	extern int exit_y;
-	
+
 	/* Map */
 	extern int worldMap[mapWidth][mapHeight];
 
@@ -93,4 +93,5 @@
 	char *random_map_path(void);
 	int find_color(int x, int y);
 	void find_exit_wall(void);
+	void can_exit(void);
 #endif

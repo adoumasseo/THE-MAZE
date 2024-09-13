@@ -26,7 +26,7 @@ void draw_map(void)
 			else if (worldMap[j][i] == 1)
 				SDL_SetRenderDrawColor(gRenderer,
 						255, 255, 255, 255);
-			else
+			else if (worldMap[j][i] == 2)
 				SDL_SetRenderDrawColor(gRenderer,
 						0, 255, 0, 255);
 			/*Draw the rectangle */
@@ -160,6 +160,7 @@ int load_map_from_file(void)
 		printf("Map load is: %s\n", filename);
 		return (0);
 	}
+	printf("Map load is: %s\n", filename);
 	free(filename);
 	return (1);
 }

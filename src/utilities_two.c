@@ -37,6 +37,25 @@ int find_color(int x, int y)
 {
 	if (worldMap[y][x] == 1)
 		return (1);
-	else
+	else if (worldMap[y][x] == 2)
 		return(2);
+}
+
+
+void find_exit_wall(void)
+{
+	int j, i;
+
+	for (j = 0; j < mapHeight; j++)
+	{
+		for (i = 0; i < mapWidth; i++)
+		{
+			if (worldMap[j][i] == 2)
+			{
+				exit_x = i;
+				exit_y = j;
+			}
+		}
+	}
+	printf("(%d, %d)\n", exit_x, exit_y);
 }

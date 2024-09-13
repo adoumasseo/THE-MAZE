@@ -16,6 +16,8 @@ int main(int argc, char *argv[])
 		printf("Unable to load the map \n");
 		return (-1);
 	}
+	else
+		find_exit_wall();
 	if (init() < 0)
 	{
 		printf("Something fail in the init\n");
@@ -41,6 +43,7 @@ int main(int argc, char *argv[])
 			SDL_RenderPresent(gRenderer);
 		}
 	}
+	printf("(%f, %f)\n", px, py);
 	free_close();
 	return (0);
 }
