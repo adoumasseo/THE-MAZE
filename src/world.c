@@ -40,10 +40,8 @@ void draw_world(double rx, double ry, double px,
 	int wallTopPixel, wallBottomPixel;
 	float distanceToWall, wallHeight;
 	const double projectionPlaneDist = (screenWidth / 2) / tan(FOV / 2);
-	Uint32 drawColor, texel;
+	Uint32 drawColor;
 	Uint8 r, g, b, a;
-	float hitX;
-	int texX, texY, y;
 
 	distanceToWall = sqrt((rx - px) * (rx - px) + (ry - py) * (ry - py));
 	distanceToWall *= cos(ra - pa); /*eyefish effect */
@@ -51,26 +49,24 @@ void draw_world(double rx, double ry, double px,
 	wallTopPixel = (screenHeight / 2) - (wallHeight / 2);
 	wallBottomPixel = (screenHeight / 2) + (wallHeight / 2);
 
-	draw_celling(index, wallTopPixel);
-	draw_floor(index, wallBottomPixel);
+	/* Draw celling */
+	SDL_SetRenderDrawColor(gRenderer, 85, 129, 149, 255);
+	SDL_RenderDrawLine(gRenderer, index, 0, index, wallTopPixel);
 
-	if (hitVertical)
-		hitX = (ry - (int)ry) * wall.w;
-	else
-		hitX = (rx - (int)rx) * wall.w;
-	texX = (int)(hitX) % wall.w;
+	/* Draw floor*/
+	SDL_SetRenderDrawColor(gRenderer, 28, 40, 51, 255);
+	SDL_RenderDrawLine(gRenderer, index, wallBottomPixel,
+					index, screenHeight);
 
-	for (y = wallTopPixel; y < wallBottomPixel; y++)
-	{
-		texY = (y - wallTopPixel) * ((float)wall.h / wallHeight);
-		texel = wall.texture_buffer[(texY * wall.w) + texX];
-		// drawColor = handle_light_effect(texel, distanceToWall);
-		r = (texel >> 24) & 0xFF;
-		g = (texel >> 16) & 0xFF;
-		b = (texel >> 8) & 0xFF;
-		a = texel & 0xFF;
-		SDL_SetRenderDrawColor(gRenderer, r, g, b, a);
-		/* Draw the vertical line representing the wall slice */
-		SDL_RenderDrawLine(gRenderer, index, wallTopPixel, index, wallBottomPixel);
-	}
+	drawColor = handle_light_effect((255 << 24) | (255 << 16)
+				| (255 << 8) | 255, distanceToWall);
+	r = (drawColor >> 24) & 0xFF;
+	g = (drawColor >> 16) & 0xFF;
+	b = (drawColor >> 8) & 0xFF;
+	a = drawColor & 0xFF;
+	SDL_SetRenderDrawColor(gRenderer, r, g, b, a);
+
+	/* Draw the vertical line representing the wall slice */
+	SDL_RenderDrawLine(gRenderer, index, wallTopPixel,
+					index, wallBottomPixel);
 }

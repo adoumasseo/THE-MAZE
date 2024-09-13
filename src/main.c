@@ -11,6 +11,7 @@ int main(int argc, char *argv[])
 	SDL_Event e;
 	int quit = 0;
 
+	random_map_path();
 	if (argc < 2)
 	{
 		printf("Usage: %s <map file> \n", argv[0]);

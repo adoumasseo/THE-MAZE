@@ -4,6 +4,8 @@
 	#include "stdio.h"
 	#include "SDL2/SDL.h"
 	#include <stddef.h>
+	#include <stdlib.h>
+	#include <time.h>
 	#include <math.h>
 	#include "upng.h"
 
@@ -80,4 +82,6 @@
 	void print_texture(void);
 	void draw_celling(int index, int wtp);
 	void draw_floor(int index, int wbp);
+	int random_int(void);
+	char *random_map_path(void);
 #endif

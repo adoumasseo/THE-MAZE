@@ -63,3 +63,15 @@ void set_hitVertical(float rx, float ry)
 	else
 		hitVertical = 0;
 }
+
+/**
+ * random_int - a fct to generate Random int between 1 & 9
+ * Return: The integer generate
+ */
+int random_int(void)
+{
+	int min = 1, max = 9;
+
+	srand(time(NULL));
+	return (min + rand() % (min - max + 1));
+}
