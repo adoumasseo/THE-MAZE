@@ -117,15 +117,15 @@ Uint32 handle_light_effect(Uint32 wallColor, float distance)
  * load_map_from_file - a function to load the map from a file
  * Description: This function uses the path given, opens the file
  * at this map, reads it, and loads it into the worldMap global variable.
- * @filename: the path of the file that contains the map
  * Return: 1 on success, 0 on failure
  */
-int load_map_from_file(const char *filename)
+int load_map_from_file(void)
 {
 	int col, row = 0;
 	size_t len;
 	FILE *mapFile = NULL;
 	char line[mapWidth + 2];
+	char *filename = random_map_path();
 
 	if (filename == NULL)
 		return (0);
@@ -154,7 +154,10 @@ int load_map_from_file(const char *filename)
 	{
 		printf("Map file incorrect dimensions.Rows read= %d, expected= %d.\n",
 		row, mapHeight);
+		printf("Map load is: %s\n", filename);
 		return (0);
 	}
+	printf("Map load is: %s\n", filename);
+	free(filename);
 	return (1);
 }
