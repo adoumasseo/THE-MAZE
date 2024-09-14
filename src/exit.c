@@ -50,14 +50,14 @@ void exit_prompt(const char *q, const char *o)
 {
 	int twq, thq, two, tho;
 	SDL_Rect renderQ, renderO;
-	SDL_Color textColor = {0, 0, 0}; 
-	SDL_Surface* prompt_question_s = TTF_RenderText_Solid(font_prompt_q,
+	SDL_Color textColor = {0, 0, 0};
+	SDL_Surface *prompt_question_s = TTF_RenderText_Solid(font_prompt_q,
 							q, textColor);
-	SDL_Surface* prompt_option_s = TTF_RenderText_Solid(font_prompt_o,
-							o, textColor);					
-	SDL_Texture* promt_qst = SDL_CreateTextureFromSurface(gRenderer,
+	SDL_Surface *prompt_option_s = TTF_RenderText_Solid(font_prompt_o,
+							o, textColor);
+	SDL_Texture *promt_qst = SDL_CreateTextureFromSurface(gRenderer,
 												prompt_question_s);
-	SDL_Texture* promt_opt = SDL_CreateTextureFromSurface(gRenderer,
+	SDL_Texture *promt_opt = SDL_CreateTextureFromSurface(gRenderer,
 												prompt_option_s);
 
 	SDL_FreeSurface(prompt_question_s);
@@ -79,4 +79,7 @@ void exit_prompt(const char *q, const char *o)
 	SDL_RenderCopy(gRenderer, promt_qst, NULL, &renderQ);
 	SDL_RenderCopy(gRenderer, promt_opt, NULL, &renderO);
 	SDL_RenderPresent(gRenderer);
+
+	SDL_DestroyTexture(promt_qst);
+	SDL_DestroyTexture(promt_opt);
 }

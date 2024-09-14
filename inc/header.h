@@ -110,4 +110,5 @@
 	void draw_cardinal_directions(int x, int y, int radius);
 	void draw_player_direction(int x, int y, int radius);
 	void render_compass(void);
+	void draw_CD_name(void);
 #endif
