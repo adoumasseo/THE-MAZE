@@ -48,6 +48,7 @@ int main(int argc, char *argv[])
 			}
 			create_viewport();
 			draw_map();
+			render_compass();
 			cast_rays();
 			/*Update the screen */
 			SDL_RenderPresent(gRenderer);
