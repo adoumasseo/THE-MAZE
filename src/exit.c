@@ -7,7 +7,7 @@
  */
 void handle_confirm_quit(SDL_Event e)
 {
-	while(SDL_WaitEvent(&e))
+	while (SDL_WaitEvent(&e))
 	{
 		if (e.key.keysym.sym == SDLK_y)
 		{
@@ -18,6 +18,7 @@ void handle_confirm_quit(SDL_Event e)
 		{
 			SDL_SetRenderDrawColor(gRenderer, 0, 0, 0, 0);
 			SDL_RenderClear(gRenderer);
+			Timer_Unpause();
 			break;
 		}
 	}
@@ -30,16 +31,42 @@ void handle_confirm_quit(SDL_Event e)
  */
 void handle_win_exit(SDL_Event e)
 {
-	while(SDL_WaitEvent(&e))
+	while (SDL_WaitEvent(&e))
 	{
 		if (e.key.keysym.sym == SDLK_SPACE)
 		{
+			Timer_Pause();
 			quit = 1;
 			break;
 		}
 	}
 }
 
+
+/**
+ * handle_lose_decision - for when the player lose
+ * @e: SDL_Event
+ * Return: Nothing
+ */
+void handle_lose_decision(SDL_Event e)
+{
+	while (SDL_WaitEvent(&e))
+	{
+		if (e.key.keysym.sym == SDLK_y)
+		{
+			quit = 1;
+			break;
+		}
+		if (e.key.keysym.sym == SDLK_n)
+		{
+			SDL_SetRenderDrawColor(gRenderer, 0, 0, 0, 0);
+			SDL_RenderClear(gRenderer);
+			Timer_Stop();
+			Timer_Start();
+			break;
+		}
+	}
+}
 /**
  * exit_prompt - this function handle the exit prompt printing on screen
  * @q: The question
@@ -50,7 +77,7 @@ void exit_prompt(const char *q, const char *o)
 {
 	int twq, thq, two, tho;
 	SDL_Rect renderQ, renderO;
-	SDL_Color textColor = {0, 0, 0};
+	SDL_Color textColor = {0, 0, 0, 255};
 	SDL_Surface *prompt_question_s = TTF_RenderText_Solid(font_prompt_q,
 							q, textColor);
 	SDL_Surface *prompt_option_s = TTF_RenderText_Solid(font_prompt_o,

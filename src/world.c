@@ -3,6 +3,8 @@
 
 /**
  * drax_celling - draw the celling
+ * @index: index
+ * @wtp: the top wall
  * Return: Nothing
  */
 void draw_celling(int index, int wtp)
@@ -14,6 +16,8 @@ void draw_celling(int index, int wtp)
 
 /**
  * draw_floor - draw the floor
+ * @index: index
+ * @wbp: the bottom wall
  * Return: Nothing
  */
 void draw_floor(int index, int wbp)
@@ -33,6 +37,7 @@ void draw_floor(int index, int wbp)
  * @ra: the ray angle
  * @pa: the player direction angle
  * @index: the current index in the cast_rays loop
+ * @color_code: the color code
  */
 void draw_world(double rx, double ry, double px,
 			double py, double ra, double pa,

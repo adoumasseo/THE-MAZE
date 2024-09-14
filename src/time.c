@@ -53,12 +53,13 @@ void Timer_Unpause(void)
 }
 
 /**
- * Timer_GetTicks - Get the current ticks 
+ * Timer_GetTicks - Get the current ticks
  * Return: current time i guess
  */
 Uint32 Timer_GetTicks(void)
 {
 	Uint32 time = 0;
+
 	if (gameTime.started)
 	{
 		if (gameTime.paused)

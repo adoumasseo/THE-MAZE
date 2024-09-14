@@ -1,22 +1,23 @@
 #include "../inc/header.h"
 
 /**
- * drax_circle - a fct to draw the circle of the compass
+ * draw_circle - a fct to draw the circle of the compass
  * @x: the x coordinate of the circle center
  * @y: the y coordinate of the circle center
  * @radius: the radius of the circle
- * 
  * Return: Nothing
  */
 void draw_circle(int x, int y, int radius)
 {
+	int dx, dy;
+
 	SDL_SetRenderDrawColor(gRenderer, 0, 0, 0, 255);
 	for (int w = 0; w < radius * 2; w++)
 	{
 		for (int h = 0; h < radius * 2; h++)
 		{
-			int dx = radius - w;
-			int dy = radius - h;
+			dx = radius - w;
+			dy = radius - h;
 			if ((dx * dx + dy * dy) <= (radius * radius))
 			{
 				SDL_RenderDrawPoint(gRenderer, x + dx, y + dy);
@@ -30,7 +31,6 @@ void draw_circle(int x, int y, int radius)
  * @x: the x coordinate of the circle center
  * @y: the y coordinate of the circle center
  * @radius: the radius of the circle
- * 
  * Return: Nothing
  */
 void draw_cardinal_directions(int x, int y, int radius)
@@ -42,9 +42,9 @@ void draw_cardinal_directions(int x, int y, int radius)
 	SDL_SetRenderDrawColor(gRenderer, 255, 255, 255, 255);
 	/*East*/
 	SDL_RenderDrawLine(gRenderer, x + radius, y, x + radius - 10, y);
-	// South
+	/*South*/
 	SDL_RenderDrawLine(gRenderer, x, y + radius, x, y + radius - 10);
-	// West
+	/*East*/
 	SDL_RenderDrawLine(gRenderer, x - radius, y, x - radius + 10, y);
 }
 
@@ -53,13 +53,13 @@ void draw_cardinal_directions(int x, int y, int radius)
  * @x: the x coordinate of the circle center
  * @y: the y coordinate of the circle center
  * @radius: the radius of the circle
- * 
  * Return: Nothing
  */
 void draw_player_direction(int x, int y, int radius)
 {
 	int directionX = x + (int)(radius * cos(playerAngle));
 	int directionY = y + (int)(radius * sin(playerAngle));
+
 	SDL_RenderDrawLine(gRenderer, x, y, directionX, directionY);
 }
 
@@ -75,16 +75,15 @@ void draw_CD_name(void)
 	SDL_Rect renderText;
 	SDL_Surface *text_s;
 	SDL_Texture *text_T;
-	SDL_Color textColor = {255, 255, 255};
+	SDL_Color textColor = {255, 255, 255, 255};
 	const char *directions[4] = {"N", "E", "W", "S"};
-	int positions[4][2] =
-	{
+	int positions[4][2] = {
 		{92, 300},
 		{175, 385},
 		{5, 385},
 		{92, 480}
-    };
-	for (int i = 0; i < 4; i++)
+	};
+	for (i = 0; i < 4; i++)
 	{
 		text_s = TTF_RenderText_Solid(font_prompt_o, directions[i], textColor);
 		text_T = SDL_CreateTextureFromSurface(gRenderer, text_s);

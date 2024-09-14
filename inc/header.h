@@ -116,6 +116,7 @@
 	void exit_prompt(const char *q, const char *o);
 	void handle_confirm_quit(SDL_Event e);
 	void handle_win_exit(SDL_Event e);
+	void handle_lose_decision(SDL_Event e);
 	void draw_ath(void);
 	void draw_circle(int x, int y, int radius);
 	void draw_cardinal_directions(int x, int y, int radius);

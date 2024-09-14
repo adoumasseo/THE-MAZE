@@ -15,7 +15,7 @@ char *random_map_path(void)
 	if (path == NULL)
 	{
 		printf("Malloc failed \n");
-		return NULL;
+		return (NULL);
 	}
 	for (i = 0; i < len; i++)
 	{
@@ -37,8 +37,8 @@ int find_color(int x, int y)
 {
 	if (worldMap[y][x] == 1)
 		return (1);
-	else if (worldMap[y][x] == 2)
-		return(2);
+	else
+		return (2);
 }
 
 /**
@@ -86,7 +86,6 @@ int can_exit(void)
  * @color: the color to print it in
  * @x: the x coordinate
  * @y: the y cooordinate
- * 
  * Return: Nothing it's void type function
  */
 void RenderText(const char *message, SDL_Color color, int x, int y)
@@ -115,7 +114,6 @@ void RenderText(const char *message, SDL_Color color, int x, int y)
 	renderQuad.y = y;
 	renderQuad.w = tw;
 	renderQuad.h = th;
-	
 	SDL_RenderCopy(gRenderer, texture, NULL, &renderQuad);
 
 	SDL_DestroyTexture(texture);

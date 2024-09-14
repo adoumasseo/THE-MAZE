@@ -6,7 +6,7 @@
  */
 int Timer_IsStarted(void)
 {
-	return gameTime.started;
+	return (gameTime.started);
 }
 
 /**
@@ -15,5 +15,5 @@ int Timer_IsStarted(void)
  */
 int Timer_IsPaused(void)
 {
-	return gameTime.paused;
+	return (gameTime.paused);
 }
