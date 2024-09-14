@@ -42,7 +42,7 @@ void draw_map(void)
 				j * cellSize*draw_factor);
 	}
 	SDL_SetRenderDrawColor(gRenderer, 255, 255, 255, 255);
-	draw_player();
+	/*draw_player();*/
 }
 
 /**
@@ -75,11 +75,11 @@ void cast_rays(void)
 				set_hitVertical(rayX, rayY);
 				SDL_RenderSetViewport(gRenderer, &ath_viewport);
 				SDL_SetRenderDrawColor(gRenderer, 255, 0, 0, 255);
-				/*Draw with factor */
+				/*Draw with factor 
 				SDL_RenderDrawLine(gRenderer,
 					px * draw_factor  + cellSize * draw_factor / 2,
 					py * draw_factor + cellSize * draw_factor / 2,
-					rayX * draw_factor, rayY * draw_factor);
+					rayX * draw_factor, rayY * draw_factor);*/
 				SDL_RenderSetViewport(gRenderer, &game_viewport);
 				draw_world(rayX, rayY, px, py, rayAngle, playerAngle,
 							i, find_color(mapX, mapY));
