@@ -19,9 +19,9 @@ int init(void)
 		getScreenBound();
 		if (!init_font())
 			succes_status = -1;
-		gWindow = SDL_CreateWindow("RAYCASTING TUTO", SDL_WINDOWPOS_UNDEFINED,
-					SDL_WINDOWPOS_UNDEFINED, screenWidth,
-					screenHeight, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
+		gWindow = SDL_CreateWindow("RAYCASTING TUTO",
+					SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
+					0, 0, SDL_WINDOW_FULLSCREEN_DESKTOP);
 	}
 	if (gWindow == NULL)
 	{
