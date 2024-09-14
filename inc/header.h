@@ -36,6 +36,17 @@
 		upng_t *upng_texture;
 	} texture_t;
 
+
+	/*Time handler*/
+	typedef struct time_s
+	{
+		Uint32 startTicks;
+		Uint32 pausedTicks;
+		int paused;
+		int started;
+	} Timer;
+	extern Timer gameTime;
+
 	/* window & Renderer */
 	extern SDL_Window *gWindow;
 	extern SDL_Renderer *gRenderer;
@@ -111,4 +122,15 @@
 	void draw_player_direction(int x, int y, int radius);
 	void render_compass(void);
 	void draw_CD_name(void);
+
+	/* Time handler function */
+	void Timer_Start(void);
+	void Timer_Stop(void);
+	void Timer_Pause(void);
+	void Timer_Unpause(void);
+	Uint32 Timer_GetTicks(void);
+	int Timer_IsStarted(void);
+	int Timer_IsPaused(void);
+	void RenderText(const char *message, SDL_Color color, int x, int y);
+	void draw_rect(int x, int y, int w, int h);
 #endif

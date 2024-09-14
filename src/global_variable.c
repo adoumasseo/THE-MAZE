@@ -27,7 +27,7 @@ double px = mapWidth * cellSize - 40;
 double py = mapHeight * cellSize - 40;
 double pdx;/*assign in player.c draw_player() */
 double pdy;/*assign in player.c draw_player() */
-double playerAngle = 0.0;
+double playerAngle = 4.5;
 int hitVertical = 0; /* Check if a vertical or horizontal wall is hit*/
 
 /*Texture for the walls*/
@@ -36,3 +36,6 @@ texture_t exitWall;
 
 /* Exit wall coordinate */
 int exit_x, exit_y;
+
+/* Time handler*/
+Timer gameTime = {0, 0, 0, 0};

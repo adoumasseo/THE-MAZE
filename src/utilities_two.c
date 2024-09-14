@@ -79,3 +79,45 @@ int can_exit(void)
 	else
 		return (0);
 }
+
+/**
+ * RenderText - as his name
+ * @message: the string to render
+ * @color: the color to print it in
+ * @x: the x coordinate
+ * @y: the y cooordinate
+ * 
+ * Return: Nothing it's void type function
+ */
+void RenderText(const char *message, SDL_Color color, int x, int y)
+{
+	int tw, th;
+	SDL_Rect renderQuad;
+	SDL_Texture *texture;
+	SDL_Surface *textSurface = TTF_RenderText_Solid(font_prompt_q,
+													message, color);
+	if (!textSurface)
+	{
+		printf("Unable to render the text(RenderText fct): %s\n",
+													TTF_GetError());
+		return;
+	}
+	texture = SDL_CreateTextureFromSurface(gRenderer, textSurface);
+	if (!texture)
+	{
+		printf("Unable to create texture!(RenderText fct): %s\n",
+												SDL_GetError());
+		SDL_FreeSurface(textSurface);
+		return;
+	}
+	SDL_QueryTexture(texture, NULL, NULL, &tw, &th);
+	renderQuad.x = x;
+	renderQuad.y = y;
+	renderQuad.w = tw;
+	renderQuad.h = th;
+	
+	SDL_RenderCopy(gRenderer, texture, NULL, &renderQuad);
+
+	SDL_DestroyTexture(texture);
+	SDL_FreeSurface(textSurface);
+}

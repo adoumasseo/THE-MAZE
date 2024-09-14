@@ -10,7 +10,11 @@ int main(int argc, char *argv[])
 {
 	SDL_Event e;
 	quit = 0;
-	
+	SDL_Color textColor = {0, 255, 0};
+	Uint32 ct; /*current time*/
+	char timeText[10];
+	int sec, min;
+
 	if (!load_map_from_file())
 	{
 		printf("Unable to load the map \n");
@@ -25,6 +29,7 @@ int main(int argc, char *argv[])
 	}
 	else
 	{
+		Timer_Start();
 		while (!quit)
 		{
 			while (SDL_PollEvent(&e))
@@ -46,9 +51,16 @@ int main(int argc, char *argv[])
 				handle_key_input();
 				handle_mouse_input();
 			}
+			ct = Timer_GetTicks();
+			min = (ct / 1000) / 60;
+			sec = (ct / 1000) % 60;
+			snprintf(timeText, sizeof(timeText), "%02u:%02us", min, sec);
 			create_viewport();
 			draw_map();
 			render_compass();
+			RenderText("TIME", textColor, 5, 560);
+			draw_rect(5, 600, 125, 40);
+			RenderText(timeText, textColor, 10	, 600);
 			cast_rays();
 			/*Update the screen */
 			SDL_RenderPresent(gRenderer);
