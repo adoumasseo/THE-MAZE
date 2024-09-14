@@ -32,10 +32,15 @@ int main(int argc, char *argv[])
 				if (e.type == SDL_QUIT)
 					quit = 1;
 				if (can_exit() && handle_quit())
-					quit = 1;
+				{
+					exit_prompt("YOU WIN !!",
+							"PRESS SPACE TO QUIT");	
+					handle_win_exit(e);
+				}
 				else if (handle_quit())
 				{
-					exit_prompt();
+					exit_prompt("DO YOU WANT TO QUIT THE GAME ??",
+							"PRESS Y TO QUIT AND N TO CONTINUE !!");
 					handle_confirm_quit(e);
 				}
 				handle_key_input();

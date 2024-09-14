@@ -102,6 +102,7 @@
 	void find_exit_wall(void);
 	int can_exit(void);
 	int init_font(void);
-	void exit_prompt(void);
+	void exit_prompt(const char *q, const char *o);
 	void handle_confirm_quit(SDL_Event e);
+	void handle_win_exit(SDL_Event e);
 #endif

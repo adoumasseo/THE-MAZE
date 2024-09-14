@@ -60,7 +60,7 @@ int init_font(void)
 {
 	font_prompt_q = TTF_OpenFont("./assets/fonts/Montserrat-Black.ttf", 30);
 	font_prompt_o = TTF_OpenFont("./assets/fonts/Montserrat-Medium.ttf", 20);
-	if (font_prompt_o == NULL || font_prompt_q == NULL || font_win == NULL);
+	if (font_prompt_o == NULL || font_prompt_q == NULL)
 	{
 		printf("Failed to load font! SDL_ttf Error: %s\n", TTF_GetError());
 		return (0);
