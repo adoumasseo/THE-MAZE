@@ -41,7 +41,6 @@ int init(void)
 		{
 			SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
 			SDL_RenderClear(gRenderer);
-			SDL_RenderPresent(gRenderer);
 		}
 	}
 	return (succes_status);
