@@ -2,7 +2,7 @@
 
 
 /**
- * drax_celling - draw the celling
+ * draw_celling - draw the celling
  * @index: index
  * @wtp: the top wall
  * Return: Nothing
