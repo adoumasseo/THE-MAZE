@@ -22,8 +22,6 @@ int main(void)
 		sec = (Timer_GetTicks() / 1000) % 60;
 		while (SDL_PollEvent(&e))
 		{
-			if (e.type == SDL_QUIT)
-				quit = 1;
 			if (can_exit() && handle_quit())
 			{
 				exit_prompt("YOU WIN :)", "PRESS SPACE TO QUIT");
@@ -32,16 +30,14 @@ int main(void)
 			else if (handle_quit())
 			{
 				Timer_Pause();
-				exit_prompt("WANNA QUIT ?", "Y TO QUIT AND N TO CONTINUE");
+				exit_prompt("WANT TO QUIT ?", "Y TO QUIT AND N TO CONTINUE");
 				handle_confirm_quit(e);
 			}
 			handle_key_input();
 			handle_mouse_input();
 		}
 		snprintf(timeText, sizeof(timeText), "%02u:%02us", min, sec);
-		create_viewport();
-		draw_map();
-		render_compass();
+		draw_ATH();
 		RenderText("TIME", textColor, 5, 560);
 		draw_rect(5, 600, 125, 40);
 		RenderText(timeText, textColor, 10, 600);

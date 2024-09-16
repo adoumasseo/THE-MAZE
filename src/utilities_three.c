@@ -15,3 +15,14 @@ void draw_rect(int x, int y, int w, int h)
 	SDL_SetRenderDrawColor(gRenderer, 0, 255, 0, 255);
 	SDL_RenderDrawRect(gRenderer, &outlineRect);
 }
+
+/**
+ * draw_ATH - Call of function to draw the primary ATH
+ * Return: Nothing
+ */
+void draw_ATH(void)
+{
+	create_viewport();
+	draw_map();
+	render_compass();
+}

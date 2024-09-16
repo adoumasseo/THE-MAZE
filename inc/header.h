@@ -110,4 +110,5 @@
 	int Timer_IsPaused(void);
 	void RenderText(const char *message, SDL_Color color, int x, int y);
 	void draw_rect(int x, int y, int w, int h);
+	void draw_ATH(void);
 #endif
