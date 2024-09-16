@@ -39,4 +39,8 @@ when the compilation proccess end use this command and you can test the game
 ```sh
 $ ./raycaster
 ```
+Here is some images of the actual gameplay:
+![IMAGE 1](https://github.com/adoumasseo/THE-MAZE/blob/main/assets/images/image1.png)
+![IMAGE 2](https://github.com/adoumasseo/THE-MAZE/blob/main/assets/images/image2.png)
+![IMAGE 3](https://github.com/adoumasseo/THE-MAZE/blob/main/assets/images/image3.png)
 
