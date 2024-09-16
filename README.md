@@ -3,7 +3,7 @@
 
 The Maze is a 3D Maze game that uses ray casting to render a 2D map into a 3D navigable world!
 Here is the context: <br>
-Every time you launch the program you land in one of the 10 random maps available. You have a compass, a drawing of the map and the time that passes. Your goal is to find the exit drawn in green on the map and in the 3D rendering as quickly as possible. Eventually I would like there to be a timer and when you reach the time limit without finding the exit you lose the game. Basically it's a kind of escape game without the textures.
+Every time you launch the program you land in one of the 10 random maps available. You have a compass, a 2D drawing of the map and the time that passes. Your goal is to find the exit drawn in green on the 2D map and in the 3D rendering world as quickly as possible. Eventually I would like there to be a timer and when you reach the time limit without finding the exit you lose the game. Basically it's a kind of escape game without the textures.
 
 <br>
 <br>
