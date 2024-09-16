@@ -17,3 +17,17 @@ int Timer_IsPaused(void)
 {
 	return (gameTime.paused);
 }
+
+/**
+ * check_escape_time - check if the player reach the time to lose
+ * @e: The game event queue
+ * Return: Nothing it's void type function
+ */
+void check_escape_time(SDL_Event e)
+{
+	if (Timer_GetTicks() >= 120000)
+	{
+		exit_prompt("YOU LOSE :(", "PRESS Y TO QUIT, N TO RESTART");
+		handle_lose_decision(e);
+	}
+}

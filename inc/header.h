@@ -33,6 +33,7 @@
 	/* window & Renderer */
 	extern SDL_Window *gWindow;
 	extern SDL_Renderer *gRenderer;
+	extern SDL_Color textColor;
 	extern int quit;
 
 	/*Font*/
@@ -111,4 +112,5 @@
 	void RenderText(const char *message, SDL_Color color, int x, int y);
 	void draw_rect(int x, int y, int w, int h);
 	void draw_ATH(void);
+	void check_escape_time(SDL_Event e);
 #endif

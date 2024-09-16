@@ -7,7 +7,6 @@
 int main(void)
 {
 	SDL_Event e;
-	SDL_Color textColor = {0, 255, 0, 255};
 	char timeText[10];
 	int sec, min;
 
@@ -20,6 +19,7 @@ int main(void)
 	{
 		min = (Timer_GetTicks() / 1000) / 60;
 		sec = (Timer_GetTicks() / 1000) % 60;
+		check_escape_time(e);
 		while (SDL_PollEvent(&e))
 		{
 			if (can_exit() && handle_quit())

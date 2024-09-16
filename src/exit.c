@@ -54,6 +54,7 @@ void handle_lose_decision(SDL_Event e)
 	{
 		if (e.key.keysym.sym == SDLK_y)
 		{
+			Timer_Stop();
 			quit = 1;
 			break;
 		}
@@ -61,12 +62,15 @@ void handle_lose_decision(SDL_Event e)
 		{
 			SDL_SetRenderDrawColor(gRenderer, 0, 0, 0, 0);
 			SDL_RenderClear(gRenderer);
+			px = mapWidth * cellSize - 40;
+			py = mapHeight * cellSize - 40;
 			Timer_Stop();
 			Timer_Start();
 			break;
 		}
 	}
 }
+
 /**
  * exit_prompt - this function handle the exit prompt printing on screen
  * @q: The question

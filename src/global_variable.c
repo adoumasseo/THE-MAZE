@@ -3,6 +3,7 @@
 /* SDL STUFF*/
 SDL_Window *gWindow = NULL;
 SDL_Renderer *gRenderer = NULL;
+SDL_Color textColor = {0, 255, 0, 255};
 int quit;
 
 /* Font */
