@@ -117,7 +117,7 @@ int init_music(void)
 	}
 	else
 	{
-		bg_music = Mix_LoadMUS("backgound.wav");
+		bg_music = Mix_LoadMUS("./assets/music/backgound.wav");
 		if (!bg_music)
 		{
 			printf("music can be load %s\n", Mix_GetError());
