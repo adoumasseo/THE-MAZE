@@ -36,3 +36,6 @@ int exit_x, exit_y;
 
 /* Time handler*/
 Timer gameTime = {0, 0, 0, 0};
+
+/* Music handler */
+Mix_Music *bg_music;

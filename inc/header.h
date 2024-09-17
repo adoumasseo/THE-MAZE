@@ -53,6 +53,9 @@
 	extern double pdx;
 	extern double pdy;
 
+	/* Music handler*/
+	extern Mix_Music *bg_music;
+
 	/* Exit wall coordinate */
 	extern int exit_x;
 	extern int exit_y;
@@ -114,4 +117,5 @@
 	void draw_rect(int x, int y, int w, int h);
 	void draw_ATH(void);
 	void check_escape_time(SDL_Event e);
+	int init_music(void);
 #endif

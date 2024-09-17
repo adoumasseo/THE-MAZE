@@ -17,7 +17,7 @@ int init(void)
 	else
 	{
 		getScreenBound();
-		if (!init_font())
+		if (!init_font() || init_music())
 			succes_status = -1;
 		gWindow = SDL_CreateWindow("RAYCASTING TUTO",
 					SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
@@ -93,6 +93,8 @@ void create_viewport(void)
  */
 void free_close(void)
 {
+	Mix_FreeMusic(bg_music);
+	Mix_CloseAudio();
 	SDL_DestroyRenderer(gRenderer);
 	gRenderer = NULL;
 	SDL_DestroyWindow(gWindow);
@@ -100,4 +102,27 @@ void free_close(void)
 	/*free_texture_of_upng();*/
 	TTF_Quit();
 	SDL_Quit();
+}
+
+/**
+ * init_music - This function is supposed to init the SDL2 music lib
+ * Return: 1 on succes 0 else
+ */
+int init_music(void)
+{
+	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
+	{
+		printf("SDL_mixer can init!(init_music): %s\n", Mix_GetError());
+		return (0);
+	}
+	else
+	{
+		bg_music = Mix_LoadMUS("backgound.wav");
+		if (!bg_music)
+		{
+			printf("music can be load %s\n", Mix_GetError());
+			return (0);
+		}
+	}
+	return (1);
 }

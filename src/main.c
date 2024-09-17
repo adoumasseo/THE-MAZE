@@ -14,6 +14,7 @@ int main(void)
 	load_map_from_file();
 	find_exit_wall();
 	init();
+	Mix_PlayMusic(bg_music, -1);
 	Timer_Start();
 	while (!quit)
 	{
