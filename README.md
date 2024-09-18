@@ -41,7 +41,7 @@ The second challenge was the debugging process. This was equally tough. I rememb
 Despite these challenges, the project was both interesting and rewarding. I had a lot of fun developing it and learned a great deal along the way.
 
 ## Author(s)
-- **[Your Name](https://www.linkedin.com/in/your-profile)**
+- **[Ortniel ADOUMASSE](https://www.linkedin.com/in/ortniel-adoumasse/)**
 
 ## Installation
 
