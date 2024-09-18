@@ -15,7 +15,7 @@
 	#define cellSize 32
 	#define draw_factor 0.25
 	#define rotationSpeed 0.1
-	#define moveSpeed 2
+	#define moveSpeed 1.5
 	#define FOV (60 * M_PI / 180)
 	#define NUM_RAYS screenWidth
 	#define distance_bf_dark 800

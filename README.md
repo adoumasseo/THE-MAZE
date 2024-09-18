@@ -1,46 +1,89 @@
 
 # MAZE - The RENEWALLS
 
-The Maze is a 3D Maze game that uses ray casting to render a 2D map into a 3D navigable world!
-Here is the context: <br>
-Every time you launch the program you land in one of the 10 random maps available. You have a compass, a 2D drawing of the map and the time that passes. Your goal is to find the exit drawn in green on the 2D map and in the 3D rendering world as quickly as possible. Eventually I would like there to be a timer and when you reach the time limit without finding the exit you lose the game. Basically it's a kind of escape game without the textures.
+![Language](https://img.shields.io/badge/Language-C%20-gray)
+![Library](https://img.shields.io/badge/Library-SDL2-blue)
+![OS](https://img.shields.io/badge/OS-Ubuntu%2023.04-orange)
+![License](https://img.shields.io/badge/License-MIT-green)
 
-<br>
-<br>
-The work is not finished, I am still working on it and for the moment I am using the C library and SDL2. The development was done with Ubuntu 23.04 LTS - gcc
+## Introduction
 
-### About SDL2 
+**MAZE - The RENEWALLS** is a 3D maze escape game built using ray casting technology to transform a 2D map into a fully navigable 3D world. The game offers 10 randomly generated maps, challenging players to find the exit before time runs out. A compass and a 2D mini-map assist the player, and the exit is marked in green. The gameplay focuses on quick decision-making and navigation within the maze, making it an immersive escape game experience.
 
-Simple DirectMedia Layer is a cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware via OpenGL and Direct3D. It is used by video playback software, emulators, and popular games including Valve's award winning catalog and many Humble Bundle games.
+Development is ongoing, using C and SDL2 on Ubuntu 23.04. You are going to play whitout texture, but key mechanics like raycasting and player navigation have been implemented.
+
+### Key Features:
+- **Randomized Maps**: Every playthrough begins in one of 10 unique maps.
+- **Time Challenge**: Players need to escape before the timer runs out.
+- **Compass & Map**: Use the compass and 2D map for orientation within the maze.
+- **Cross-platform**: Built with SDL2, allowing it to run on various operating systems(As soon a you install necessary library).
+
+## Final Project Blog Article
+Read more about the development journey and challenges faced during the creation of **MAZE - The RENEWALLS** in the final project blog post [here](#).
+
+## Author(s)
+- **[ADOUMASSE Ortniel](https://www.linkedin.com/in/ortniel-adoumasse/)**
+
+## Installation
 
 ### Prerequisites
-This is the default for Ubuntu users. If you don't use it, you'll have to do some research to install them on your operating system.
-<br>
-You need to have SDL2, SDL2_image and SDL2_ttf install on your machine.
-In case you haven't installed them yet you can use the ```install.sh``` file in the root of the project to install them with the command
+Before installing the game, ensure the following dependencies are installed on your system:
+- SDL2
+- SDL2_image
+- SDL2_ttf
+- SDL2_mixer
+
+For Ubuntu users, run the provided `install.sh` script to automatically install the necessary dependencies:
 ```sh
 $ ./install.sh
 ```
-### Instalation
-Clone this repository with the command:
-```sh
-$ git clone https://github.com/adoumasseo/THE-MAZE.git
-```
-After the clone move to THE-MAZE directory
-```sh
-$ cd THE-MAZE
-```
 
-Now use this command
-```sh
-$ gcc -o raycaster ./src/*  -lSDL2 -lSDL2_ttf -lm 
-```
-when the compilation proccess end use this command and you can test the game
-```sh
-$ ./raycaster
-```
-Here is some images of the actual gameplay:
-![IMAGE 1](https://github.com/adoumasseo/THE-MAZE/blob/main/assets/images/image1.png)
-![IMAGE 2](https://github.com/adoumasseo/THE-MAZE/blob/main/assets/images/image2.png)
-![IMAGE 3](https://github.com/adoumasseo/THE-MAZE/blob/main/assets/images/image3.png)
+### Steps
+1. Clone the repository:
+    ```sh
+    $ git clone https://github.com/adoumasseo/THE-MAZE.git
+    ```
 
+2. Navigate to the project directory:
+    ```sh
+    $ cd THE-MAZE
+    ```
+
+3. Compile the source code:
+    ```sh
+    $ gcc -o raycaster ./src/* -lSDL2 -lSDL2_ttf -lSDL2_mixer -lm
+    ```
+
+4. Run the game:
+    ```sh
+    $ ./raycaster
+    ```
+
+## Usage
+
+Once the game is launched, use the following controls to navigate:
+- **WASD** to move.
+- **Left Arrow** to rotate left.
+- **Right Arrow** to rotate right.
+- **ESC** to pause and quit the game.
+- **ESC** to quit the maze  when you reach the exit wall
+- The compass and 2D map will help you find the exit in the maze.
+
+## Contributing
+
+Contributions are welcome! Please follow these steps:
+1. Fork the project.
+2. Create a new branch (`git checkout -b feature/your-feature`).
+3. Commit your changes (`git commit -m 'Add new feature'`).
+4. Push to the branch (`git push origin feature/your-feature`).
+5. Open a Pull Request.
+
+## Related Projects
+
+If you're interested in similar projects, check out:
+- [Wolfenstein 3D](https://github.com/id-Software/wolf3d)
+- [Raycasting in Games](https://github.com/raycasting/tutorial)
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE.md](LICENSE.md) file for details.
