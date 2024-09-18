@@ -97,7 +97,7 @@ $ ./install.sh
 
 3. Compile the source code:
     ```sh
-    $ gcc -o raycaster ./src/* -lSDL2 -lSDL2_ttf -lSDL2_mixer -lm
+    $ gcc -Werror -Wall -Wextra -pedantic -o raycaster ./src/* -lSDL2 -lSDL2_ttf -lSDL2_mixer -lm
     ```
 
 4. Run the game:
