@@ -6,6 +6,16 @@
 ![OS](https://img.shields.io/badge/OS-Ubuntu%2023.04-orange)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
+## Table of Contents
+- [Introduction](#introduction)
+- [Final Project Blog Article](#final-project-blog-article)
+- [Author(s)](#authors)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [Related Projects](#related-projects)
+- [License](#license)
+
 ## Introduction
 
 **MAZE - The RENEWALLS** is a 3D maze escape game built using ray casting technology to transform a 2D map into a fully navigable 3D world. The game offers 10 randomly generated maps, challenging players to find the exit before time runs out. A compass and a 2D mini-map assist the player, and the exit is marked in green. The gameplay focuses on quick decision-making and navigation within the maze, making it an immersive escape game experience.
@@ -82,7 +92,7 @@ Contributions are welcome! Please follow these steps:
 
 If you're interested in similar projects, check out:
 - [Wolfenstein 3D](https://github.com/id-Software/wolf3d)
-- [Raycasting in Games](https://github.com/raycasting/tutorial)
+- [Raycasting in Games](https://github.com/danielaloperahernandez/The-Maze.git)
 
 ## License
 
