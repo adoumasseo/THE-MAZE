@@ -10,7 +10,7 @@
 void draw_celling(int index, int wtp)
 {
 	/* Draw celling */
-	SDL_SetRenderDrawColor(gRenderer, 85, 129, 149, 255);
+	SDL_SetRenderDrawColor(gRenderer, 25, 25, 25, 255);
 	SDL_RenderDrawLine(gRenderer, index, 0, index, wtp);
 }
 
@@ -23,7 +23,7 @@ void draw_celling(int index, int wtp)
 void draw_floor(int index, int wbp)
 {
 	/* Draw floor*/
-	SDL_SetRenderDrawColor(gRenderer, 28, 40, 51, 255);
+	SDL_SetRenderDrawColor(gRenderer, 1, 1, 14, 255);
 	SDL_RenderDrawLine(gRenderer, index, wbp,
 					index, screenHeight);
 }
@@ -59,8 +59,8 @@ void draw_world(double rx, double ry, double px,
 	draw_floor(index, wallBottomPixel);
 
 	if (color_code == 1)
-		drawColor = handle_light_effect((255 << 24) | (255 << 16)
-					| (255 << 8) | 255, distanceToWall);
+		drawColor = handle_light_effect((200 << 24) | (200 << 16)
+					| (200 << 8) | 255, distanceToWall);
 	else if (color_code == 2)
 		drawColor = handle_light_effect((0 << 24) | (255 << 16)
 					| (0 << 8) | 255, distanceToWall);

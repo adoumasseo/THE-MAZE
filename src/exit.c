@@ -81,7 +81,7 @@ void exit_prompt(const char *q, const char *o)
 {
 	int twq, thq, two, tho;
 	SDL_Rect renderQ, renderO;
-	SDL_Color textColor = {0, 0, 0, 255};
+	SDL_Color textColor = {150, 150, 150, 255};
 	SDL_Surface *prompt_question_s = TTF_RenderText_Solid(font_prompt_q,
 							q, textColor);
 	SDL_Surface *prompt_option_s = TTF_RenderText_Solid(font_prompt_o,

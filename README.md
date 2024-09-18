@@ -12,6 +12,7 @@
 - [Final Project Blog Article](#final-project-blog-article)
 - [Author(s)](#authors)
 - [Installation](#installation)
+- [Key Features](#key-features)
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [Related Projects](#related-projects)
@@ -39,36 +40,8 @@ The second challenge was the debugging process. This was equally tough. I rememb
 
 Despite these challenges, the project was both interesting and rewarding. I had a lot of fun developing it and learned a great deal along the way.
 
-## Final Project Blog Article
-Read more about the development journey and challenges faced during the creation of **MAZE - The RENEWALLS** in the final project blog post [here](#).
-
 ## Author(s)
 - **[Your Name](https://www.linkedin.com/in/your-profile)**
-
-## Installation
-
-### Prerequisites
-Before installing the game, ensure the following dependencies are installed on your system:
-- SDL2
-- SDL2_image
-- SDL2_ttf
-- SDL2_mixer
-
-For Ubuntu users, run the provided `install.sh` script to automatically install the necessary dependencies:
-```sh
-$ ./install.sh
-
-### Key Features:
-- **Randomized Maps**: Every playthrough begins in one of 10 unique maps.
-- **Time Challenge**: Players need to escape before the timer runs out.
-- **Compass & Map**: Use the compass and 2D map for orientation within the maze.
-- **Cross-platform**: Built with SDL2, allowing it to run on various operating systems(As soon a you install necessary library).
-
-## Final Project Blog Article
-Read more about the development journey and challenges faced during the creation of **MAZE - The RENEWALLS** in the final project blog post [here](#).
-
-## Author(s)
-- **[ADOUMASSE Ortniel](https://www.linkedin.com/in/ortniel-adoumasse/)**
 
 ## Installation
 
@@ -104,6 +77,11 @@ $ ./install.sh
     ```sh
     $ ./raycaster
     ```
+### Key Features:
+- **Randomized Maps**: Every playthrough begins in one of 10 unique maps.
+- **Time Challenge**: Players need to escape before the timer runs out.
+- **Compass & Map**: Use the compass and 2D map for orientation within the maze.
+- **Cross-platform**: Built with SDL2, allowing it to run on various operating systems(As soon a you install necessary library).
 
 ## Usage
 
