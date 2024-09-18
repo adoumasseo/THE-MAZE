@@ -62,8 +62,7 @@ void handle_lose_decision(SDL_Event e)
 		{
 			SDL_SetRenderDrawColor(gRenderer, 0, 0, 0, 0);
 			SDL_RenderClear(gRenderer);
-			px = mapWidth * cellSize - 40;
-			py = mapHeight * cellSize - 40;
+			set_player_pos();
 			Timer_Stop();
 			Timer_Start();
 			break;

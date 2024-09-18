@@ -111,17 +111,17 @@ int handle_quit(void)
  */
 void init_player_base_position(void)
 {
-	if (exit_x > 0 && exit_x <= 11 && exit_y > 0 && exit_y <= 11)
+	if (exit_x >= 0 && exit_x <= 11 && exit_y >= 0 && exit_y <= 11)
 	{
 		basepx = (mapHeight - 2) * cellSize;
 		basepy = (mapHeight - 2) * cellSize;
 	}
-	else if (exit_x > 11 && exit_x < 23 && exit_y > 0 && exit_y <= 11)
+	else if (exit_x > 11 && exit_x <= 23 && exit_y >= 0 && exit_y <= 11)
 	{
 		basepx = cellSize;
 		basepy = (mapHeight - 2) * cellSize;
 	}
-	else if (exit_x > 0 && exit_x <= 11 && exit_y > 11 && exit_y < 23)
+	else if (exit_x >= 0 && exit_x <= 11 && exit_y > 11 && exit_y <= 23)
 	{
 		basepx = (mapHeight - 2) * cellSize;
 		basepy = cellSize;
