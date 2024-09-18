@@ -49,6 +49,8 @@
 	extern SDL_Rect player;
 	extern double px;
 	extern double py;
+	extern double basepx;
+	extern double basepy;
 	extern double playerAngle;
 	extern double pdx;
 	extern double pdy;
@@ -118,4 +120,6 @@
 	void draw_ATH(void);
 	void check_escape_time(SDL_Event e);
 	int init_music(void);
+	void init_player_base_position(void);
+	void set_player_pos(void);
 #endif

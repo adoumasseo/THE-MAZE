@@ -60,7 +60,7 @@ void find_exit_wall(void)
 			}
 		}
 	}
-	/*printf("(%d, %d)\n", exit_x, exit_y);*/
+	printf("(%d, %d)\n", exit_x, exit_y);
 }
 
 /**

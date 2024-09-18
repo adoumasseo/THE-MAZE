@@ -13,6 +13,8 @@ int main(void)
 	quit = 0;
 	load_map_from_file();
 	find_exit_wall();
+	init_player_base_position();
+	set_player_pos();
 	init();
 	Mix_PlayMusic(bg_music, -1);
 	Timer_Start();
