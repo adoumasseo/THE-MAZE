@@ -72,10 +72,13 @@ int can_exit(void)
 	int iPx = (int)(px / cellSize);
 	int iPy = (int)(py / cellSize);
 
-	/*printf("(iPx: %d, iPy: %d)\n", iPx, iPy);*/
+	printf("(iPx: %d, iPy: %d)\n", iPx, iPy);
 	if (iPx <= exit_x + distance_around_exit && iPx >= exit_x
 			&& iPy <= exit_y + distance_around_exit && iPy >= exit_y)
-		return (1);
+		{
+			printf("(iPx2: %d, iPy2: %d)\n", iPx, iPy);
+			return (1);
+		}
 	else
 		return (0);
 }
