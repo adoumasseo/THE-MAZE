@@ -25,7 +25,7 @@ int Timer_IsPaused(void)
  */
 void check_escape_time(SDL_Event e)
 {
-	if (Timer_GetTicks() >= 60000)
+	if (Timer_GetTicks() >= 120000)
 	{
 		exit_prompt("YOU LOSE :(", "PRESS Y TO QUIT, N TO RESTART");
 		handle_lose_decision(e);

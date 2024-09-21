@@ -35,7 +35,7 @@ char *random_map_path(void)
  */
 int find_color(int x, int y)
 {
-	if (worldMap[y][x] == 1)
+	if (worldMap[y][x] == 1 || worldMap[y][x] == 3)
 		return (1);
 	else
 		return (2);
@@ -58,15 +58,13 @@ void find_exit_wall(void)
 				exit_x = i;
 				exit_y = j;
 			}
-			if (worldMap[j][i] == 3)
+			else if (worldMap[j][i] == 3)
 			{
 				basepx = i;
-				basepx = j;
+				basepy = j;
 			}
 		}
 	}
-	printf("base y (%f)\n", basepx);
-	printf("exit (%d, %d)\n", exit_x, exit_y);
 }
 
 /**

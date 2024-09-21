@@ -19,8 +19,8 @@ int main(void)
 	Timer_Start();
 	while (!quit)
 	{
-		min = ((60000 - Timer_GetTicks()) / 1000) / 60;
-		sec = ((60000 - Timer_GetTicks()) / 1000) % 60;
+		min = ((120000 - Timer_GetTicks()) / 1000) / 60;
+		sec = ((120000 - Timer_GetTicks()) / 1000) % 60;
 		check_escape_time(e);
 		while (SDL_PollEvent(&e))
 		{
