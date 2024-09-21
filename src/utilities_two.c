@@ -75,7 +75,6 @@ int can_exit(void)
 	if (iPx <= exit_x + distance_around_exit && iPx >= exit_x
 			&& iPy <= exit_y + distance_around_exit && iPy >= exit_y)
 		{
-			printf("On es dans la condition (iPx2: %d, iPy2: %d)\n", iPx, iPy);
 			return (1);
 		}
 	else
