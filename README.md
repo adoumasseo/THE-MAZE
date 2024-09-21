@@ -70,10 +70,19 @@ $ ./install.sh
 
 3. Compile the source code:
     ```sh
+    $ make
+    ``` <br>
+    or
+    ```sh
     $ gcc -Werror -Wall -Wextra -pedantic -o raycaster ./src/* -lSDL2 -lSDL2_ttf -lSDL2_mixer -lm
     ```
 
 4. Run the game:
+    ```sh
+    $ make run
+    ``` <br>
+    or
+
     ```sh
     $ ./raycaster
     ```
