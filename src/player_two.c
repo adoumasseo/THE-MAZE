@@ -8,7 +8,7 @@
  */
 void set_player_pos(void)
 {
-	px = basepx;
-	py = basepy;
-	printf("(%f, %f)\n", px, py);
+	px = basepx * cellSize;
+	py = basepy * cellSize;
+	printf("Player pos y ( %f)\n", basepy);
 }

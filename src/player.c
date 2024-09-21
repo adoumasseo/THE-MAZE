@@ -102,34 +102,3 @@ int handle_quit(void)
 		return (1);
 	return (0);
 }
-
-/**
- * init_player_base_position - Init the player base position
- * Description: This function use the coordinate find of the exit wall
- * To find the most far point to it
- * Return: Nothing it's void type function
- */
-void init_player_base_position(void)
-{
-	if (exit_x >= 0 && exit_x <= 11 && exit_y >= 0 && exit_y <= 11)
-	{
-		basepx = (mapHeight - 2) * cellSize - 16;
-		basepy = (mapHeight - 2) * cellSize - 16;
-	}
-	else if (exit_x > 11 && exit_x <= 23 && exit_y >= 0 && exit_y <= 11)
-	{
-		basepx = cellSize - 16;
-		basepy = (mapHeight - 2) * cellSize - 16;
-	}
-	else if (exit_x >= 0 && exit_x <= 11 && exit_y > 11 && exit_y <= 23)
-	{
-		basepx = (mapHeight - 2) * cellSize - 16;
-		basepy = cellSize - 16;
-	}
-	else
-	{
-		basepx = cellSize - 16;
-		basepy = cellSize - 16;
-	}
-	printf("(%f, %f)\n", basepx, basepy);
-}

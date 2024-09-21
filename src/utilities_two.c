@@ -42,7 +42,7 @@ int find_color(int x, int y)
 }
 
 /**
- * find_exit_wall - a fct to find the exit coordinate of the world
+ * find_exit_wall - a fct to find the exit and init player base pos
  * Return: Nothing it's void type function
  */
 void find_exit_wall(void)
@@ -58,9 +58,15 @@ void find_exit_wall(void)
 				exit_x = i;
 				exit_y = j;
 			}
+			if (worldMap[j][i] == 3)
+			{
+				basepx = i;
+				basepx = j;
+			}
 		}
 	}
-	printf("(%d, %d)\n", exit_x, exit_y);
+	printf("base y (%f)\n", basepx);
+	printf("exit (%d, %d)\n", exit_x, exit_y);
 }
 
 /**

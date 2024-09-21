@@ -120,6 +120,5 @@
 	void draw_ATH(void);
 	void check_escape_time(SDL_Event e);
 	int init_music(void);
-	void init_player_base_position(void);
 	void set_player_pos(void);
 #endif
