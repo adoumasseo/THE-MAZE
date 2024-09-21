@@ -14,6 +14,7 @@
 - [Installation](#installation)
 - [Key Features](#key-features)
 - [Usage](#usage)
+- [Game Flowchart](#Game-Flowchart)
 - [Contributing](#contributing)
 - [Related Projects](#related-projects)
 - [License](#license)
@@ -103,6 +104,7 @@ Once the game is launched, use the following controls to navigate:
 - The compass and 2D map will help you find the exit in the maze.
 
 ## Game Flowchart
+
 ![flowchart](https://github.com/adoumasseo/diagrammes/blob/f175a501e624937f9dc84ebda5c0b58bddad568c/the_maze_flowchart.drawio.png)
 
 ## Contributing
