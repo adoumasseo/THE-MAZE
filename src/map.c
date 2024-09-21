@@ -20,7 +20,7 @@ void draw_map(void)
 			square.w = cellSize * draw_factor;
 			square.h = cellSize * draw_factor;
 			/*Set the draw color based on map value*/
-			if (worldMap[j][i] == 0)
+			if (worldMap[j][i] == 0 || worldMap[j][i] == 3)
 				SDL_SetRenderDrawColor(gRenderer,
 							0, 0, 0, 255);
 			else if (worldMap[j][i] == 1)

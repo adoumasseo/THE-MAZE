@@ -13,15 +13,14 @@ int main(void)
 	quit = 0;
 	load_map_from_file();
 	find_exit_wall();
-	init_player_base_position();
 	set_player_pos();
 	init();
 	Mix_PlayMusic(bg_music, -1);
 	Timer_Start();
 	while (!quit)
 	{
-		min = ((60000 - Timer_GetTicks()) / 1000) / 60;
-		sec = ((60000 - Timer_GetTicks()) / 1000) % 60;
+		min = ((120000 - Timer_GetTicks()) / 1000) / 60;
+		sec = ((120000 - Timer_GetTicks()) / 1000) % 60;
 		check_escape_time(e);
 		while (SDL_PollEvent(&e))
 		{

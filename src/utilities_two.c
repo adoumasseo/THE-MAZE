@@ -35,14 +35,14 @@ char *random_map_path(void)
  */
 int find_color(int x, int y)
 {
-	if (worldMap[y][x] == 1)
+	if (worldMap[y][x] == 1 || worldMap[y][x] == 3)
 		return (1);
 	else
 		return (2);
 }
 
 /**
- * find_exit_wall - a fct to find the exit coordinate of the world
+ * find_exit_wall - a fct to find the exit and init player base pos
  * Return: Nothing it's void type function
  */
 void find_exit_wall(void)
@@ -58,9 +58,13 @@ void find_exit_wall(void)
 				exit_x = i;
 				exit_y = j;
 			}
+			else if (worldMap[j][i] == 3)
+			{
+				basepx = i;
+				basepy = j;
+			}
 		}
 	}
-	printf("(%d, %d)\n", exit_x, exit_y);
 }
 
 /**
@@ -75,7 +79,6 @@ int can_exit(void)
 	if (iPx <= exit_x + distance_around_exit && iPx >= exit_x
 			&& iPy <= exit_y + distance_around_exit && iPy >= exit_y)
 		{
-			printf("On es dans la condition (iPx2: %d, iPy2: %d)\n", iPx, iPy);
 			return (1);
 		}
 	else
