@@ -31,7 +31,7 @@ double px;
 double py;
 double pdx;/*assign in player.c draw_player() */
 double pdy;/*assign in player.c draw_player() */
-double playerAngle = 4.5;
+double playerAngle = 0.0;
 double basepx;
 double basepy;
 

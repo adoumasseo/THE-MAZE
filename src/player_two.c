@@ -8,6 +8,6 @@
  */
 void set_player_pos(void)
 {
-	px = basepx * cellSize;
-	py = basepy * cellSize;
+	px = basepx * cellSize - 16;
+	py = basepy * cellSize - 16;
 }
