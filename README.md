@@ -96,11 +96,14 @@ $ ./install.sh
 
 Once the game is launched, use the following controls to navigate:
 - **WASD** to move.
-- **Left Arrow** to rotate left.
-- **Right Arrow** to rotate right.
+- **Left Arrow** or **Mouse left** to rotate left.
+- **Right Arrow** or **Mouse Right** to rotate right.
 - **ESC** to pause and quit the game.
 - **ESC** to quit the maze  when you reach the exit wall
 - The compass and 2D map will help you find the exit in the maze.
+
+## Game Flowchart
+![flowchart](https://github.com/adoumasseo/diagrammes/blob/f175a501e624937f9dc84ebda5c0b58bddad568c/the_maze_flowchart.drawio.png)
 
 ## Contributing
 
